@@ -9,22 +9,26 @@
     <link rel="icon" href="{{asset('favicon.ico')}}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
 {{--Title--}}
 @yield('title')
+
 <!-- Styles -->
     @include('layouts.styles')
 </head>
 <body>
 <!-- Navigation -->
 @include('layouts.nav')
+
 <!-- All_content (content and sidebar) -->
-
-{{--@yield('all_content')--}}
-
 <div class="container">
     <div class="row">
+
         <!-- content page -->
         <div class="col-md-8" style="margin-top: 25px">
+            <div class="messages">
+                @include('layouts.messages')
+            </div>
             @yield('content')
         </div>
 
