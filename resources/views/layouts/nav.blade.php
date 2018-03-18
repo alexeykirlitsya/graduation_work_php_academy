@@ -3,11 +3,11 @@
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="navbarResponsive">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
 
@@ -24,8 +24,8 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
-                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('Вход') }}</a></li>
-                    <li><a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a></li>
+                    <li><a class="nav-link {{Route::is('login') ? 'active' : ''}}" href="{{ route('login') }}">{{ __('Вход') }}</a></li>
+                    <li><a class="nav-link {{Route::is('register') ? 'active' : ''}}" href="{{ route('register') }}" href="{{ route('register') }}">{{ __('Регистрация') }}</a></li>
                 @else
 
                     <li class="nav-item dropdown">
@@ -33,16 +33,19 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
+                        <div class="dropdown-menu">
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="{{route('home')}}"><span class="glyphicon glyphicon-user" style="margin-right: 5px"></span>Страница профиля</a></li>
+                                <li class="list-group-item"><a href="{{ route('logout') }}"
+                                                               onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
+                                        <span class="glyphicon glyphicon-ban-circle" style="margin-right: 5px"></span>Выйти
+                                    </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form></li>
+                            </ul>
                         </div>
                     </li>
                 @endguest

@@ -1,7 +1,16 @@
+*{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+a{
+    color: #7A2F1F;
+}
+a:hover{
+    color: #94321C;
+}
 .bg-dark {
     background-color: #801902!important;
 }
-.btn-contact{
+.btn-form{
     color: #fff;
     background-color: #7A2F1F;
 }
@@ -13,4 +22,50 @@
 
 a.nav-link{
     color: #fff;
+}
+
+/*menu logout*/
+
+.list-group-item {
+    margin-bottom: 0;
+    background-color: #fff;
+    border: 0;
+    border-bottom: 1px solid #cccccc;
+}
+.list-group-item:last-child {
+    border-bottom: 0;
+}
+
+.list-group-item {
+    padding: 10px;
+}
+.dropdown-menu{
+    width: 200px;
+}
+
+/*menu sidebar admin*/
+.vertical-menu {
+    width: 100%;
+}
+
+.vertical-menu a {
+    background-color: #eeeeee;
+    border-bottom: 1px solid #cccccc;
+    color: #000000;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+.vertical-menu a:last-child {
+    border-bottom: none;
+}
+
+.vertical-menu a:hover {
+    color: #ffffff;
+    background-color: #94321C;
+}
+
+.vertical-menu a.active {
+    background-color: #7A2F1F;
+    color: #ffffff;
 }

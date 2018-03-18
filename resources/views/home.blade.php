@@ -1,23 +1,24 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>Страница пользователя: {{$user->name}}</title>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Dashboard</div>
-
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+                    <h4>Имя: {{ $user->name }}</h4>
+                    <h4>E-mail: {{ $user->email }}</h4>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('sidebar')
+    @include('pages.sidebar')
 @endsection

@@ -15,6 +15,8 @@
 
 <!-- Styles -->
     @include('layouts.styles')
+<!-- Others styles -->
+    @yield('styles')
 </head>
 <body>
 <!-- Navigation -->
@@ -39,10 +41,11 @@
     </div>
 </div>
 
-
 <!-- Footer -->
 @include('layouts.footer')
 <!-- Scripts -->
 @include('layouts.scripts')
+<!-- Others scripts -->
+@yield('scripts')
 </body>
 </html>

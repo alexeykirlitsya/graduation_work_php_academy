@@ -17,6 +17,11 @@ Route::get('/ob_avtote', 'IndexPageController@about')->name('about.page');
 Route::get('/kontakty', 'IndexPageController@contact')->name('contact.page');
 Route::post('/kontakty', 'IndexPageController@postContact')->name('post.contact.page');
 
+//Admin
+Route::prefix('admin')->group(function () {
+    Route::get('/','AdminIndexPageController@show')->name('admin.page');
+});
+
 
 
 Auth::routes();

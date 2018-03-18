@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-    <div>Страница с контактами и формой обратной связи...</div>
     <div class="row">
         <div class="col-md-12">
             <div class="starter-template">
@@ -25,11 +24,9 @@
                     {{Form::textarea('message', '', ['class' => 'form-control', 'placeholder' => 'Текст сообщения'])}}
                 </div>
                 <div class="form-group">
-                    {{Form::submit('Отправить письмо', ['class' => 'btn btn-contact'])}}
+                    {{Form::submit('Отправить письмо', ['class' => 'btn btn-form'])}}
                 </div>
-
                 @csrf
-
                 {!! Form::close() !!}
             </div>
         </div>
