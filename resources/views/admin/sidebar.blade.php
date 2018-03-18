@@ -4,9 +4,9 @@
         <div class="panel-group">
             <div class="panel-body">
                 <div class="vertical-menu">
-                    <a href="#" class="active">Главная</a>
-                    <a href="#">Главное меню</a>
-                    <a href="#">Страницы</a>
+                    <a href="{{route('admin.page')}}" class="{{Route::is('admin.page') ? 'active' : ''}}">Главная</a>
+                    <a href="{{route('main-menu.index')}}" class="{{Route::is('main-menu.index') ? 'active' : ''}}">Главное меню</a>
+                    <a href="{{route('pages.index')}}" class="{{Route::is('pages.index') ? 'active' : ''}}">Страницы</a>
                     <a href="#">Категории</a>
                     <a href="#">Публикации</a>
                     <a href="#">Комментарии</a>

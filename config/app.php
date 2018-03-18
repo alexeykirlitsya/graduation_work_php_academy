@@ -161,6 +161,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //TopMenu
+        App\Providers\TopMenuServiceProvider::class,
+
     ],
 
     /*

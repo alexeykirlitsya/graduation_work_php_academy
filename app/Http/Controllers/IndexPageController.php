@@ -10,17 +10,12 @@ class IndexPageController extends Controller
 {
     public function show()
     {
-        return view('pages.page');
-    }
-
-    public function about()
-    {
-        return view('pages.all.about');
+        return view('pages.index');
     }
 
     public function contact()
     {
-        return view('pages.all.contact');
+        return view('pages.contact');
     }
 
     public function postContact(Request $request)

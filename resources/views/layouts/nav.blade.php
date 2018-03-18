@@ -10,14 +10,9 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-
-                <li class="{{Route::is('about.page') ? 'active' : ''}}">
-                    <a class="nav-link" href="{{route('about.page')}}">Об авторе</a>
-                </li>
-                <li class="{{Route::is('contact.page') ? 'active' : ''}}">
-                    <a class="nav-link" href="{{route('contact.page')}}">Контакты</a>
-                </li>
-
+                @foreach($menu as $m)
+                    <li class="{{ Request::url() === $m->url ? 'active' : '' }}"><a class="nav-link" href="{{url($m->url)}}">{{ $m->title }}</a></li>
+                @endforeach
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -35,6 +30,7 @@
 
                         <div class="dropdown-menu">
                             <ul class="list-group">
+                                <li class="list-group-item"><a href="{{route('admin.page')}}"><span class="glyphicon glyphicon-user" style="margin-right: 5px"></span>Админка</a></li>
                                 <li class="list-group-item"><a href="{{route('home')}}"><span class="glyphicon glyphicon-user" style="margin-right: 5px"></span>Страница профиля</a></li>
                                 <li class="list-group-item"><a href="{{ route('logout') }}"
                                                                onclick="event.preventDefault();
