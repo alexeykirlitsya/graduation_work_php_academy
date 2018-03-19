@@ -17,12 +17,16 @@
             {{Form::text('description', $page->description, ['class' => 'form-control', 'placeholder' => 'Описание: не более 100 символов...'])}}
         </div>
         <div class="form-group">
+            {{Form::label('slug', 'Название страницы транслитом', ['class' => 'label_form'])}}
+            {{Form::text('slug', $page->slug, ['class' => 'form-control', 'placeholder' => 'пример: nazvanie-stranicy'])}}
+        </div>
+        <div class="form-group">
             {{Form::label('text', 'Содержимое старницы', ['class' => 'label_form'])}}
-            {{Form::textarea('text', $page->text, ['class' => 'form-control', 'placeholder' => 'Содержимое старницы: текст, фото...'])}}
+            {{Form::textarea('text', $page->text, ['id' => 'summary-ckeditor', 'class' => 'form-control', 'placeholder' => 'Содержимое старницы: текст, фото...'])}}
         </div>
 
         <div class="form-group">
-            {{Form::submit('Редактировать страницу', ['class' => 'btn btn-success'])}}
+            {{Form::submit('Сохранить изменения', ['class' => 'btn btn-success'])}}
         </div>
         @csrf
         {!! Form::close() !!}
@@ -32,4 +36,11 @@
 
 @section('sidebar')
     @include('admin.sidebar')
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace( 'summary-ckeditor' );
+    </script>
 @endsection

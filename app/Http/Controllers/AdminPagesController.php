@@ -19,7 +19,7 @@ class AdminPagesController extends Controller
      */
     public function index()
     {
-        $pages = Page::all();
+        $pages = Page::orderBy('id', 'desc')->paginate(10);
         return view('admin.pages.index')->with('pages', $pages);
     }
 
@@ -92,12 +92,14 @@ class AdminPagesController extends Controller
     {
         $this->validate($request,[
             'title' => 'required|max:191',
+            'slug' => 'required|max:191',
             'description' => 'required|max:100',
             'text' => 'required'
         ]);
 
         $page = Page::whereSlug($slug)->firstOrFail();
         $page->title = $request->title;
+        $page->slug = $request->slug;
         $page->description = $request->description;
         $page->text = $request->text;
         $page->save();

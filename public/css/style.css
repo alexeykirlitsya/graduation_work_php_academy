@@ -109,3 +109,40 @@ a.nav-link{
     background-color: #c9302c;
     border-color: #ac2925;
 }
+.not_edit {
+    display: block;
+    border: 1px solid #d9534f;
+    background-color: #ffffff;
+    color: #d9534f;
+    text-align: center;
+    padding: 1px;
+    border-radius: 3px;
+    font-size: 13px;
+}
+/*admin page buttons: edit*/
+.admin_page_buttons_edit {
+    text-align: right;
+}
+/*paginate*/
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #ac2925;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #ac2925;
+    border-color: #ac2925;
+}
+.page-link:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #d9534f;
+    border-color: #d9534f;
+}

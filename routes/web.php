@@ -11,21 +11,25 @@
 |
 */
 
-//Pages blog
+
+/**** PAGES *****/
+
+//index page
 Route::get('/', 'IndexPageController@show')->name('index.page');
-Route::get('/kontakty', 'IndexPageController@contact')->name('contact.page');
-Route::post('/kontakty', 'IndexPageController@postContact')->name('post.contact.page');
+//contact page
+Route::get('/pages/kontakty', 'IndexPageController@contact')->name('contact.page');
+Route::post('/pages/kontakty', 'IndexPageController@postContact')->name('post.contact.page');
+//others pages
+
+Route::resource('/pages', 'AdminPagesController');
+Route::resource('/main-menu', 'AdminMainMenuController');
 
 
 //Admin
 Route::prefix('admin')->group(function () {
     Route::get('/','AdminIndexPageController@show')->name('admin.page');
-    Route::resource('/main-menu', 'AdminMainMenuController');
+    Route::resource('/categories-menu', 'AdminIndexCategoriesMenu');
 });
-Route::resource('/pages', 'AdminPagesController');
-
-
-
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

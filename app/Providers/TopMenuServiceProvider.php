@@ -30,7 +30,7 @@ class TopMenuServiceProvider extends ServiceProvider
     public function topMenu()
     {
         View::composer('layouts.nav', function ($view){
-            $view->with('menu', \App\Models\MainMenu::all());
+            $view->with('menu', \App\Models\MainMenu::orderBy('weight', 'asc')->get());
         });
     }
 }

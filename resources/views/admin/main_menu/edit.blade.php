@@ -13,12 +13,16 @@
             {{Form::text('title', $menu->title, ['class' => 'form-control', 'placeholder' => 'Название пункта меню'])}}
         </div>
         <div class="form-group">
+            {{Form::label('weight', 'URL', ['class' => 'label_form'])}}
+            {{Form::number('weight', $menu->weight, ['class' => 'form-control', 'placeholder' => 'Указавыть число от 0 до 100'])}}
+        </div>
+        <div class="form-group">
             {{Form::label('url', 'URL', ['class' => 'label_form'])}}
             {{Form::text('url', $menu->url, ['class' => 'form-control', 'placeholder' => 'url страницы'])}}
         </div>
 
         <div class="form-group">
-            {{Form::submit('Редактировать', ['class' => 'btn btn-success'])}}
+            {{Form::submit('Сохранить изменения', ['class' => 'btn btn-success'])}}
         </div>
         @csrf
         {!! Form::close() !!}

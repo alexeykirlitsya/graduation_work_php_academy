@@ -38,11 +38,13 @@ class AdminMainMenuController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title' => 'required|max:191'
+            'title' => 'required|max:191',
+            'weight' => 'required|max:100'
         ]);
 
         $menu = new MainMenu();
         $menu->title = $request->title;
+        $menu->weight = $request->weight;
         $menu->url = $request->url;
         $menu->save();
 
@@ -77,11 +79,13 @@ class AdminMainMenuController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'title' => 'required|max:191'
+            'title' => 'required|max:191',
+            'weight' => 'required|max:100'
         ]);
 
         $menu = MainMenu::find($id);
         $menu->title = $request->title;
+        $menu->weight = $request->weight;
         $menu->url = $request->url;
         $menu->save();
 
