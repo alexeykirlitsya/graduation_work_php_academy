@@ -13,36 +13,32 @@
 
     <!-- Categories Widget -->
     <div class="card my-4">
-        <h5 class="card-header">Categories</h5>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-lg-6">
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                            <a href="#">Web Design</a>
-                        </li>
-                        <li>
-                            <a href="#">HTML</a>
-                        </li>
-                        <li>
-                            <a href="#">Freebies</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                            <a href="#">JavaScript</a>
-                        </li>
-                        <li>
-                            <a href="#">CSS</a>
-                        </li>
-                        <li>
-                            <a href="#">Tutorials</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <h5 class="card-header">Категории</h5>
+        <div class="card-body menu_sidebar_pages">
+            <ul>
+                @foreach($cat_menu as $item)
+                    <li>
+                        @if($item->url == null)
+                            {{ $item->title }}
+                        @else
+                            <a href="{{url($item->url)}}">{{ $item->title }}</a>
+                        @endif
+                            @if($item->children->count() > 0)
+                                <ul>
+                                    @foreach($item->children as $sub)
+                                        <li>
+                                            @if($sub->url == null)
+                                                {{ $sub->title }}
+                                            @else
+                                                <span class="fa fa-check-circle" style="color:green; font-size:18px;"></span><a href="{{ $sub->url }}" target="_blank">{{ $sub->title }}</a>
+                                            @endif
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                    </li>
+                @endforeach
+            </ul>
         </div>
     </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CategoriesMenuParent;
+use Illuminate\Support\Facades\DB;
 
 class AdminIndexCategoriesMenu extends Controller
 {
@@ -14,8 +15,10 @@ class AdminIndexCategoriesMenu extends Controller
      */
     public function index()
     {
-        $menu_parent = CategoriesMenuParent::all();
-        return view('admin.categories_menu.index')->with('menu_parent', $menu_parent);
+        $menu_parent = CategoriesMenuParent::where('parent_id', '=', 0)->orderBy('weight', 'asc')->get();
+        $menu_children = CategoriesMenuParent::where('parent_id', '!=', 0)->orderBy('parent_id', 'asc')->orderBy('weight', 'asc')->get();
+
+        return view('admin.categories_menu.index')->with('menu_parent', $menu_parent)->with('menu_children', $menu_children);
     }
 
     /**
@@ -25,7 +28,7 @@ class AdminIndexCategoriesMenu extends Controller
      */
     public function create()
     {
-        $menu_parent = CategoriesMenuParent::where('parent_id', 0)->get();
+        $menu_parent = CategoriesMenuParent::where('parent_id', '=', 0)->get();
         return view('admin.categories_menu.create')->with('menu_parent', $menu_parent);
     }
 
@@ -39,11 +42,19 @@ class AdminIndexCategoriesMenu extends Controller
     {
         $this->validate($request,[
             'title' => 'required|max:191',
+            'url' => 'max:191',
             'weight' => 'required|max:100'
         ]);
-
+//        dd($request);
         $menu_parent = new CategoriesMenuParent();
         $menu_parent->title = $request->title;
+
+        if ($request->url == null){
+            $menu_parent->url = '';
+        } else{
+            $menu_parent->url = $request->url;
+        }
+
         $menu_parent->weight = $request->weight;
 
         if ($request->parent_id == 0){
@@ -75,8 +86,9 @@ class AdminIndexCategoriesMenu extends Controller
      */
     public function edit($id)
     {
-        $menu_parent = CategoriesMenuParent::find($id);
-        return view('admin.categories_menu.edit')->with('menu_parent', $menu_parent);
+        $menu_parent = CategoriesMenuParent::where('parent_id', '=', 0)->get();
+        $item = CategoriesMenuParent::find($id);
+        return view('admin.categories_menu.edit')->with('item', $item)->with('menu_parent', $menu_parent);
     }
 
     /**
@@ -90,12 +102,26 @@ class AdminIndexCategoriesMenu extends Controller
     {
         $this->validate($request,[
             'title' => 'required|max:191',
+            'url' => 'max:191',
             'weight' => 'required|max:100'
         ]);
 
         $menu_parent = CategoriesMenuParent::find($id);
         $menu_parent->title = $request->title;
+
+        if ($request->url == null){
+            $menu_parent->url = '';
+        } else{
+            $menu_parent->url = $request->url;
+        }
+
         $menu_parent->weight = $request->weight;
+
+        if ($request->parent_id == 0){
+            $menu_parent->parent_id = 0;
+        } else{
+            $menu_parent->parent_id = $request->parent_id;
+        }
         $menu_parent->save();
 
         return redirect()->route('categories-menu.index')->with('success', 'Пункт меню «'.$request->title.'» обновлен!');

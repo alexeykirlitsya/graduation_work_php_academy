@@ -1,6 +1,31 @@
 *{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+body{
+    background-color: #fffceb;
+}
+
+/*menu sidebar all pages*/
+.menu_sidebar_pages ul{
+    list-style: none;
+}
+.menu_sidebar_pages a{
+    margin-left: 4px;
+    margin-bottom: 1px;
+    text-decoration: none;
+}
+.menu_sidebar_pages a:hover{
+    text-decoration: underline;
+}
+/*content_block*/
+span.content_block {
+    background-color: #ffffff;
+    display: block;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    padding: 5px;
+    margin: 24px 0;
+}
 a{
     color: #7A2F1F;
 }
@@ -72,7 +97,7 @@ a.nav-link{
 .link_add {
     display: block;
     width: 50%;
-    margin: 0 auto 20px;
+    margin: 20px auto;
     color: #fff;
     background-color: #28a745;
     border-color: #28a745;
@@ -119,9 +144,47 @@ a.nav-link{
     border-radius: 3px;
     font-size: 13px;
 }
+
+.url_ok {
+    display: block;
+    border: 1px solid #28a745;
+    background-color: #ffffff;
+    color: #28a745;
+    text-align: center;
+    padding: 1px;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
 /*admin page buttons: edit*/
 .admin_page_buttons_edit {
     text-align: right;
+}
+/*admin table*/
+.table {background-color: #ffffff;}
+.table th {padding: 4px;}
+.table td {padding: 4px;}
+
+/*admin dashed line*/
+.dashed_line{
+    border-top: 1px dashed #0089fa;
+    margin: 5px 0 25px;
+}
+
+/*admin parent badge*/
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: #777;
+    border-radius: 10px;
 }
 /*paginate*/
 .page-link {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Contact;
+use App\Models\Category;
 
 class IndexPageController extends Controller
 {
@@ -32,5 +33,11 @@ class IndexPageController extends Controller
 
         Mail::to('alexeykirlitsya@gmail.com')->send(new Contact($topic, $message, $email));
         return redirect()->route('contact.page')->with('success', 'Ваше письмо было успешно отправлено!');
+    }
+
+    public function showAllCategories($slug)
+    {
+        $category = Category::where('slug', '=', $slug)->first();
+        return view('category.index')->with('category', $category);
     }
 }

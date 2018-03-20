@@ -8,7 +8,7 @@
                     <a href="{{route('main-menu.index')}}" class="{{Route::is('main-menu.index') ? 'active' : ''}}">Главное меню</a>
                     <a href="{{route('pages.index')}}" class="{{Route::is('pages.index') ? 'active' : ''}}">Страницы</a>
                     <a href="{{route('categories-menu.index')}}" class="{{Route::is('categories-menu.index') ? 'active' : ''}}">Меню категорий</a>
-                    <a href="#">Категории</a>
+                    <a href="{{route('categories.index')}}" class="{{Route::is('categories.index') ? 'active' : ''}}">Категории</a>
                     <a href="#">Публикации</a>
                     <a href="#">Комментарии</a>
                     <a href="#">Пользователи</a>

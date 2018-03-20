@@ -10,6 +10,7 @@ class CategoriesMenuParent extends Model
 
     public function children()
     {
-        return $this->hasMany('App\Models\CategoriesMenuParent','parent_id');
+        //Sorting the children menu items
+        return $this->hasMany('App\Models\CategoriesMenuParent', 'parent_id')->orderBy('weight', 'asc');
     }
 }

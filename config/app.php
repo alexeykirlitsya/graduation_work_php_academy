@@ -164,6 +164,7 @@ return [
 
         //TopMenu
         App\Providers\TopMenuServiceProvider::class,
+        App\Providers\CategoriesMenuServiceProvider::class,
 
     ],
 

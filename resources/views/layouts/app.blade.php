@@ -27,11 +27,11 @@
     <div class="row">
 
         <!-- content page -->
-        <div class="col-md-8" style="margin-top: 25px">
+        <div class="col-md-8">
             <div class="messages">
                 @include('layouts.messages')
             </div>
-            @yield('content')
+            <span class="content_block">@yield('content')</span>
         </div>
 
         <!-- sidebar page -->

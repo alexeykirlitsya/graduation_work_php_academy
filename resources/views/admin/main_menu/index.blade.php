@@ -12,7 +12,7 @@
                 <table class="table">
                     <thead>
                         <th>Название</th>
-                        <th>Номер</th>
+                        <th>Вес</th>
                         <th>URL</th>
                         <th></th>
                         <th></th>
