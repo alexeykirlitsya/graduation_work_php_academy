@@ -1,5 +1,10 @@
 <!-- Fonts -->
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+{{--Nav bar--}}
+<link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+{{--H1--}}
+<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
+{{--Other--}}
 <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
 <!-- Custom styles for this template -->

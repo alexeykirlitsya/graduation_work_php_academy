@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\MainMenu;
 
 
-class AdminMainMenuController extends Controller
+class MainMenuController extends Controller
 {
         /**
      * Display a listing of the resource.
@@ -45,12 +46,24 @@ class AdminMainMenuController extends Controller
         $menu = new MainMenu();
         $menu->title = $request->title;
         $menu->weight = $request->weight;
-        $menu->url = $request->url;
+
+        if ($request->url == null){
+            $menu->url = '';
+        } else{
+            $menu->url = $request->url;
+        }
+
         $menu->save();
 
         return redirect()->route('main-menu.index')->with('success', 'Новый пункт меню «'.$request->title.'» - добавлен');
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         return abort(404);
@@ -86,11 +99,16 @@ class AdminMainMenuController extends Controller
         $menu = MainMenu::find($id);
         $menu->title = $request->title;
         $menu->weight = $request->weight;
-        $menu->url = $request->url;
+
+        if ($request->url == null){
+            $menu->url = '';
+        } else{
+            $menu->url = $request->url;
+        }
+
         $menu->save();
 
         return redirect()->route('main-menu.index')->with('success', 'Пункт меню «'.$request->title.'» обновлен!');
-
     }
 
     /**

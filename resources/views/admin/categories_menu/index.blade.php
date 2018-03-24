@@ -13,9 +13,8 @@
                 <h3 style="text-align: center">- Родительские категории -</h3>
                 <table class="table">
                     <thead>
-                        <th>№</th>
                         <th>Название</th>
-                        <th>Вес</th>
+                        <th>Вес <span class="star">*</span></th>
                         <th>URL</th>
                         <th></th>
                         <th></th>
@@ -23,7 +22,6 @@
                     <tbody>
                     @foreach($menu_parent as $parent)
                         <tr class="tr">
-                            <td><span class="badge">{{ $parent->id }}</span></td>
                             <td>{{ $parent->title }}</td>
                             <td>{{ $parent->weight }}</td>
                             <td>
@@ -37,7 +35,7 @@
                                 <a href="{{route('categories-menu.edit', $parent->id)}}" class="btn btn-warning btn-xs">Редактировать</a>
                             </td>
                             <td>
-                                {{Form::open(['action' => ['AdminIndexCategoriesMenu@destroy', $parent->id], 'method' => 'DELETE'])}}
+                                {{Form::open(['action' => ['Admin\CategoriesMenuController@destroy', $parent->id], 'method' => 'DELETE'])}}
                                 {{Form::submit('Удалить', ['class' => 'btn btn-danger btn-xs'])}}
                                 @csrf
                                 {{Form::close()}}
@@ -46,6 +44,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                <div class="footnote"><span class="star">*</span> порядковый номер в котором будет выводиться категория в списке основного меню </div>
             @else
                 <p>Пунктов в меню категорий нет...</p>
             @endif
@@ -56,9 +55,9 @@
                 <h3 style="text-align: center">- Дочерные категории -</h3>
                 <table class="table">
                     <thead>
-                        <th>Род.</th>
                         <th>Название</th>
-                        <th>Вес</th>
+                        <th>Вес <span class="star">*</span></th>
+                        <th>Родитель</th>
                         <th>URL</th>
                         <th></th>
                         <th></th>
@@ -66,7 +65,6 @@
                     <tbody>
                     @foreach($menu_children as $children)
                         <tr>
-                            <td><span class="badge">{{ $children->parent_id }}</span></td>
                             <td>
                                 @if($children->url == null)
                                     {{ $children->title }}
@@ -75,6 +73,9 @@
                                 @endif
                             </td>
                             <td>{{ $children->weight }}</td>
+                            <td>
+                                {{Form::select('parent_id', $parent_item, $children->parent_id, ['disabled' => 'disabled', 'class' => 'admin_select_parent_menu'])}}
+                            </td>
                             <td>
                                 @if($children->url)
                                     <span class="fa fa-check-circle" style="color:green; font-size:18px;"></span>
@@ -86,7 +87,7 @@
                                 <a href="{{route('categories-menu.edit', $children->id)}}" class="btn btn-warning btn-xs">Редактировать</a>
                             </td>
                             <td>
-                                {{Form::open(['action' => ['AdminIndexCategoriesMenu@destroy', $children->id], 'method' => 'DELETE'])}}
+                                {{Form::open(['action' => ['Admin\CategoriesMenuController@destroy', $children->id], 'method' => 'DELETE'])}}
                                 {{Form::submit('Удалить', ['class' => 'btn btn-danger btn-xs'])}}
                                 @csrf
                                 {{Form::close()}}
@@ -95,6 +96,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                <div class="footnote"><span class="star">*</span> порядковый номер в котором будет выводиться подкатегория в списке родительского меню </div>
             @else
                 <p>Пунктов в меню категорий нет...</p>
             @endif
@@ -104,4 +106,3 @@
 @section('sidebar')
     @include('admin.sidebar')
 @endsection
-

@@ -7,10 +7,14 @@
 @section('content')
     <div class="col-md-12 well">
         <p>Редактировать категорию:</p>
-        {!! Form::open(['route' => ['categories.update', $category->id], 'method' => 'PUT']) !!}
+        {!! Form::open(['route' => ['categories.update', $category->slug], 'method' => 'PUT']) !!}
         <div class="form-group">
             {{Form::label('title', 'Название', ['class' => 'label_form'])}}
             {{Form::text('title', $category->title, ['class' => 'form-control', 'placeholder' => 'Название: не более 190 символов...'])}}
+        </div>
+        <div class="form-group">
+            {{Form::label('slug', 'Название категории транслитом', ['class' => 'label_form'])}}
+            {{Form::text('slug', $category->slug, ['class' => 'form-control', 'placeholder' => 'пример: nazvanie-kategorii'])}}
         </div>
         <div class="form-group">
             {{Form::label('description', 'Описание категории', ['class' => 'label_form'])}}

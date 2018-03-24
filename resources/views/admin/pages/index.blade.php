@@ -25,13 +25,13 @@
                         </tr>
                     @foreach($pages as $page)
                         <tr>
-                            <td><a href="{{ route('pages.show', $page->slug) }}">{{ $page->title }}</a></td>
-                            <td>{!!  mb_substr($page->description, 0, 35) !!} {{ strlen($page->description) > 35 ? '...' : '' }}</td>
+                            <td><a href="{{ route('pages.show', $page->slug) }}" target="_blank">{{ $page->title }}</a></td>
+                            <td>{!! mb_substr($page->description, 0, 35) !!} {{ strlen($page->description) > 35 ? '...' : '' }}</td>
                             <td>
                                 <a href="{{route('pages.edit', $page->slug)}}" class="btn btn-warning btn-xs">Редактировать</a>
                             </td>
                             <td>
-                                {{Form::open(['action' => ['AdminPagesController@destroy', $page->slug], 'method' => 'DELETE'])}}
+                                {{Form::open(['action' => ['Admin\PagesController@destroy', $page->slug], 'method' => 'DELETE'])}}
                                 {{Form::submit('Удалить', ['class' => 'btn btn-danger btn-xs'])}}
                                 @csrf
                                 {{Form::close()}}

@@ -11,6 +11,7 @@
             <table class="table">
                 <thead>
                 <th>Название</th>
+                <th>Постов</th>
                 <th>Описание</th>
                 <th></th>
                 <th></th>
@@ -19,12 +20,13 @@
                 @foreach($categories as $category)
                     <tr>
                         <td><a href="{{ route('category.page', $category->slug) }}" target="_blank">{{ $category->title }}</a></td>
+                        <td>{{count($category->posts)}}</td>
                         <td>{!!  mb_substr($category->description, 0, 35) !!} {{ strlen($category->description) > 35 ? '...' : '' }}</td>
                         <td>
                             <a href="{{route('categories.edit', $category->slug)}}" class="btn btn-warning btn-xs">Редактировать</a>
                         </td>
                         <td>
-                            {{Form::open(['action' => ['Admin\AdminIndexCategories@destroy', $category->slug], 'method' => 'DELETE'])}}
+                            {{Form::open(['action' => ['Admin\CategoriesController@destroy', $category->slug], 'method' => 'DELETE'])}}
                             {{Form::submit('Удалить', ['class' => 'btn btn-danger btn-xs'])}}
                             @csrf
                             {{Form::close()}}

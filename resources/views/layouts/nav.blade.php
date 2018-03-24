@@ -32,7 +32,7 @@
                         <div class="dropdown-menu">
                             <ul class="list-group">
                                 @if(Auth::user()->role == 1)
-                                    <li class="list-group-item"><a href="{{route('admin.page')}}"><span class="glyphicon glyphicon-user" style="margin-right: 5px"></span>Админка</a></li>
+                                    <li class="list-group-item"><a href="{{route('admin.home')}}"><span class="glyphicon glyphicon-user" style="margin-right: 5px"></span>Админка</a></li>
                                 @endif
                                 <li class="list-group-item"><a href="{{route('home')}}"><span class="glyphicon glyphicon-user" style="margin-right: 5px"></span>Страница профиля</a></li>
                                 <li class="list-group-item"><a href="{{ route('logout') }}"

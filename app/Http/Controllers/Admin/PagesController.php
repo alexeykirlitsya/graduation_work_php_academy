@@ -1,17 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Page;
 
-class AdminPagesController extends Controller
+class PagesController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth', ['except' => ['show']]);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -64,8 +60,11 @@ class AdminPagesController extends Controller
      */
     public function show($slug)
     {
+//        $page = Page::whereSlug($slug)->firstOrFail();
+//        return view('admin.pages.show')->with('page', $page);
+
         $page = Page::whereSlug($slug)->firstOrFail();
-        return view('admin.pages.show')->with('page', $page);
+        return redirect(route('single.page', $page->slug), 301);
     }
 
     /**

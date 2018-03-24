@@ -11,7 +11,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="starter-template">
+            <div class="starter-template page_contact">
                 <h1>Форма обратной связи</h1>
                 <hr>
                 {!! Form::open(['route' => 'post.contact.page', 'method' => 'POST']) !!}

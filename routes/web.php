@@ -1,42 +1,38 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
 /**** PAGES *****/
 
 //index page
-Route::get('/', 'IndexPageController@show')->name('index.page');
+Route::get('/', 'Page\IndexPageController@showHomePage')->name('index.page');
+
 //contact page
-Route::get('/pages/kontakty', 'IndexPageController@contact')->name('contact.page');
-Route::post('/pages/kontakty', 'IndexPageController@postContact')->name('post.contact.page');
+Route::get('/page/kontakty', 'Page\IndexPageController@showContactPage')->name('contact.page');
+Route::post('/page/kontakty', 'Page\IndexPageController@postContactPage')->name('post.contact.page');
+
+//single page
+Route::get('/page/{slug}', 'Page\IndexPageController@showSinglePage')->name('single.page');
 
 //category page
-Route::get('/category/{slug}','IndexPageController@showAllCategories')->name('category.page')->where('slug', '[\w\d\-\_]+');
+Route::get('/category/{slug}','Page\IndexPageController@showCategoryPage')->name('category.page')->where('slug', '[\w\d\-\_]+');
 
-
-//сделать под админом
-Route::resource('/pages', 'AdminPagesController');
-Route::resource('/main-menu', 'AdminMainMenuController');
+//post
+Route::get('/post/{slug}','Page\IndexPageController@showPostPage')->name('post.page')->where('slug', '[\w\d\-\_]+');
 
 
 //Admin
-Route::prefix('admin')->group(function () {
+Route::group(['prefix' => 'admin',  'middleware' => 'auth'],function () {
     //admin home page
-    Route::get('/','AdminIndexPageController@showAdminPage')->name('admin.page');
+    Route::get('/','Admin\PageController@home')->name('admin.home');
+    //admin main menu
+    Route::resource('/main-menu', 'Admin\MainMenuController');
+    //pages
+    Route::resource('/pages', 'Admin\PagesController');
     //categories-menu
-    Route::resource('/categories-menu', 'AdminIndexCategoriesMenu');
+    Route::resource('/categories-menu', 'Admin\CategoriesMenuController');
     //categories
-    Route::resource('/categories', 'Admin\AdminIndexCategories');
+    Route::resource('/categories', 'Admin\CategoriesController');
+    //posts
+    Route::resource('/posts', 'Admin\PostsController');
 });
 
 Auth::routes();

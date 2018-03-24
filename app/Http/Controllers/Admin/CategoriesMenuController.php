@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\CategoriesMenuParent;
-use Illuminate\Support\Facades\DB;
 
-class AdminIndexCategoriesMenu extends Controller
+class CategoriesMenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,13 @@ class AdminIndexCategoriesMenu extends Controller
         $menu_parent = CategoriesMenuParent::where('parent_id', '=', 0)->orderBy('weight', 'asc')->get();
         $menu_children = CategoriesMenuParent::where('parent_id', '!=', 0)->orderBy('parent_id', 'asc')->orderBy('weight', 'asc')->get();
 
-        return view('admin.categories_menu.index')->with('menu_parent', $menu_parent)->with('menu_children', $menu_children);
+        //one parent-item in the table categories_children_menu
+        $parent_item = [];
+        foreach ($menu_parent as $value){
+            $parent_item[$value->id] = $value->title;
+        }
+
+        return view('admin.categories_menu.index')->with('menu_parent', $menu_parent)->with('menu_children', $menu_children)->with('parent_item', $parent_item);
     }
 
     /**
@@ -28,8 +34,19 @@ class AdminIndexCategoriesMenu extends Controller
      */
     public function create()
     {
+        //get parent categories
         $menu_parent = CategoriesMenuParent::where('parent_id', '=', 0)->get();
-        return view('admin.categories_menu.create')->with('menu_parent', $menu_parent);
+
+        //make an array parent categories
+        $parent_item = [];
+
+        //add not parent category
+        $parent_item[0] = 'Без родительской';
+        foreach ($menu_parent as $value){
+            $parent_item[$value->id] = $value->title;
+        }
+
+        return view('admin.categories_menu.create')->with('menu_parent', $menu_parent)->with('parent_item', $parent_item);
     }
 
     /**
@@ -45,7 +62,7 @@ class AdminIndexCategoriesMenu extends Controller
             'url' => 'max:191',
             'weight' => 'required|max:100'
         ]);
-//        dd($request);
+
         $menu_parent = new CategoriesMenuParent();
         $menu_parent->title = $request->title;
 
@@ -86,9 +103,16 @@ class AdminIndexCategoriesMenu extends Controller
      */
     public function edit($id)
     {
-        $menu_parent = CategoriesMenuParent::where('parent_id', '=', 0)->get();
         $item = CategoriesMenuParent::find($id);
-        return view('admin.categories_menu.edit')->with('item', $item)->with('menu_parent', $menu_parent);
+        $menu_parent = CategoriesMenuParent::where('parent_id', '=', 0)->get();
+
+        $parent_item = [];
+        $parent_item[0] = 'Без родительской';
+        foreach ($menu_parent as $value){
+            $parent_item[$value->id] = $value->title;
+        }
+
+        return view('admin.categories_menu.edit')->with('item', $item)->with('parent_item', $parent_item);
     }
 
     /**
@@ -125,7 +149,6 @@ class AdminIndexCategoriesMenu extends Controller
         $menu_parent->save();
 
         return redirect()->route('categories-menu.index')->with('success', 'Пункт меню «'.$request->title.'» обновлен!');
-
     }
 
     /**
@@ -140,6 +163,5 @@ class AdminIndexCategoriesMenu extends Controller
         $menu_parent->delete();
 
         return redirect()->route('categories-menu.index')->with('success', 'Пункт меню «'.$menu_parent->title.'» удален!');
-
     }
 }

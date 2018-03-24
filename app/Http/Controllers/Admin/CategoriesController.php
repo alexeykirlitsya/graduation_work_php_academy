@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use function Couchbase\defaultDecoder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Post;
 
-class AdminIndexCategories extends Controller
+
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -86,12 +87,15 @@ class AdminIndexCategories extends Controller
     {
         $this->validate($request,[
             'title' => 'required|max:191',
+            'slug' => 'required|max:191',
             'description' => 'required|max:2000'
         ]);
 
         $category = Category::whereSlug($slug)->firstOrFail();
         $category->title = $request->title;
+        $category->slug = $request->slug;
         $category->description = $request->description;
+
         $category->save();
 
         return redirect()->route('categories.index')->with('success', 'Категория «'.$request->title.'» обновлена!');
@@ -106,6 +110,10 @@ class AdminIndexCategories extends Controller
     public function destroy($slug)
     {
         $category = Category::whereSlug($slug)->firstOrFail();
+        $category_id = $category->id;
+
+        //change post category, when category destroy
+        Post::whereCategoryId($category_id)->update(['category_id' => null]);
         $category->delete();
 
         return redirect()->route('categories.index')->with('success', 'Категория «'.$category->title.'» удалена!');

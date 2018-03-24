@@ -20,14 +20,10 @@
             {{Form::label('weight', 'Порядковый номер', ['class' => 'label_form'])}}
             {{Form::number('weight', $item->weight, ['class' => 'form-control', 'placeholder' => 'Указавыть число от 0 до 100'])}}
         </div>
+
         <div class="form-group">
             {{Form::label('parent_id', 'Родительская категория', ['class' => 'label_form'])}}
-            <select name="parent_id" class="form-control">
-                <option value="0">Без родительской</option>
-                @foreach($menu_parent as $parent)
-                    <option value="{{$parent->id}}">{{$parent->title}}</option>
-                @endforeach
-            </select>
+            {{Form::select('parent_id', $parent_item, $item->parent_id, ['class' => 'form-control'])}}
         </div>
         <div class="form-group">
             {{Form::submit('Сохранить изменения', ['class' => 'btn btn-success'])}}

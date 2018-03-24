@@ -22,12 +22,7 @@
             </div>
             <div class="form-group">
                 {{Form::label('parent_id', 'Родительская категория', ['class' => 'label_form'])}}
-                <select name="parent_id" class="form-control">
-                    <option value="0">Без родительской</option>
-                    @foreach($menu_parent as $parent)
-                        <option value="{{$parent->id}}">{{$parent->title}}</option>
-                    @endforeach
-                </select>
+                {{Form::select('parent_id', $parent_item, null, ['class' => 'form-control'])}}
             </div>
             <div class="form-group">
                 {{Form::submit('Добавить пункт меню', ['class' => 'btn btn-success'])}}

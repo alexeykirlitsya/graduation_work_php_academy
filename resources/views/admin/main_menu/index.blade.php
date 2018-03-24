@@ -18,30 +18,36 @@
                         <th></th>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Контакты</td>
-                        <td>#</td>
-                        <td>#</td>
-                        <td colspan="2">
-                            <span class="not_edit">Редактирование запрещено</span>
-                        </td>
-                    </tr>
                     @foreach($menu as $m)
                         <tr>
                             <td>{{$m->title}}</td>
                             <td>{{$m->weight}}</td>
-                            <td>{!! mb_substr($m->url, 0, 30) !!} {{ strlen($m->url) > 30 ? '...' : '' }}</td>
+                            <td>
+                                @if($m->url)
+                                    <span class="fa fa-check-circle" style="color:green; font-size:18px;"></span>
+                                @else
+                                    <span class="fa fa-ban" style="color:red; font-size:18px;"></span>
+                                @endif
+                            </td>
                             <td>
                                 <a href="{{route('main-menu.edit', $m->id)}}" class="btn btn-warning btn-xs">Редактировать</a>
                             </td>
                             <td>
-                                {{Form::open(['action' => ['AdminMainMenuController@destroy', $m->id], 'method' => 'DELETE'])}}
+                                {{Form::open(['action' => ['Admin\MainMenuController@destroy', $m->id], 'method' => 'DELETE'])}}
                                 {{Form::submit('Удалить', ['class' => 'btn btn-danger btn-xs'])}}
                                 @csrf
                                 {{Form::close()}}
                             </td>
                         </tr>
                     @endforeach
+                    <tr>
+                        <td>Контакты</td>
+                        <td>min</td>
+                        <td><span class="fa fa-check-circle" style="color:green; font-size:18px;"></span></td>
+                        <td colspan="2">
+                            <span class="not_edit">Редактирование запрещено</span>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

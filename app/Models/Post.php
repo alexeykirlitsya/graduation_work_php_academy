@@ -5,19 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Category extends Model
+class Post extends Model
 {
     use Sluggable;
 
-    protected $table = 'categories';
+    protected $table = 'posts';
 
     public function sluggable()
     {
         return ['slug' => ['source' => 'title']];
     }
 
-    public function posts()
+    public function user()
     {
-        return $this->hasMany('App\Models\Post')->orderBy('id','desc');
+        return $this->belongsTo('App\User');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
     }
 }

@@ -1,13 +1,38 @@
+/*all styles*/
 *{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 body{
     background-color: #fffceb;
 }
+h1{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+a{
+    color: #7A2F1F;
+}
+a:hover{
+    color: #d9534f;
+}
+.messages {
+    margin: 10px 0;
+}
+.form-control:focus {
+    color: #495057;
+    border-color: #495057;
+    background-color: #fff;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0.2rem rgba(172,41,37,.25);
+    box-shadow: 0 0 0 0.2rem rgba(172,41,37,.25);
+}
+
+/*ALL PAGES*/
 
 /*menu sidebar all pages*/
-.menu_sidebar_pages ul{
+.menu_sidebar_pages ul {
     list-style: none;
+    padding: 0;
+    margin-left: 20px;
 }
 .menu_sidebar_pages a{
     margin-left: 4px;
@@ -17,7 +42,14 @@ body{
 .menu_sidebar_pages a:hover{
     text-decoration: underline;
 }
-/*content_block*/
+a.menu_sidebar_pages_item {
+    font-size: 18px !important;
+}
+
+/*content block all pages*/
+.page_contact {
+    margin: 20px;
+}
 span.content_block {
     background-color: #ffffff;
     display: block;
@@ -26,11 +58,8 @@ span.content_block {
     padding: 5px;
     margin: 24px 0;
 }
-a{
-    color: #7A2F1F;
-}
-a:hover{
-    color: #94321C;
+.content_margin_single_posts_preview {
+    margin: 10px;
 }
 .bg-dark {
     background-color: #801902!important;
@@ -39,18 +68,30 @@ a:hover{
     color: #fff;
     background-color: #7A2F1F;
 }
-
+.btn-form:hover{
+    color: #fff;
+    background-color: #d9534f;
+}
 .btn-contact:hover{
     color: #fff;
     background-color: #94321C;
 }
-
 a.nav-link{
     color: #fff;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 16px;
+}
+.navbar-brand{
+    color: #fff;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 20px;
 }
 
 /*menu logout*/
-
+.list-group-item a{
+    font-family: 'Exo 2', sans-serif;
+    font-size: 16px;
+}
 .list-group-item {
     margin-bottom: 0;
     background-color: #fff;
@@ -60,12 +101,95 @@ a.nav-link{
 .list-group-item:last-child {
     border-bottom: 0;
 }
-
 .list-group-item {
     padding: 10px;
 }
 .dropdown-menu{
     width: 200px;
+}
+
+/*paginate all pages blog*/
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #ac2925;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #ac2925;
+    border-color: #ac2925;
+}
+.page-link:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #d9534f;
+    border-color: #d9534f;
+}
+
+/*CATEGORY PAGE - logout category index page*/
+
+/* logout category index page - block single post*/
+.post_on_cat_page{
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    padding: 10px;
+    margin: 10px 0;
+}
+.post_on_cat_page_title a {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 25px;
+    padding-bottom: 5px;
+}
+.post_on_cat_page_content{
+    margin-top: -5px;
+}
+.post_on_cat_page_text{
+    margin-top: 10px;
+}
+.post_on_cat_page_info{
+    text-align: left;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 16px;
+}
+.post_on_cat_page_info a{
+     font-family: 'Yanone Kaffeesatz', sans-serif;
+     font-size: 16px;
+ }
+.post_on_cat_page img{
+    margin: 5px 0;
+}
+.dashed_line_cat_index_page{
+    border-top: 1px dashed #ccc;
+    margin: 5px 0 5px;
+}
+
+/*POST PAGE - logout post index page*/
+
+/*logout post single*/
+.post_single_page_admin_buttons.text-right {
+    margin: 10px 0;
+}
+.post_single_page h1{
+    text-align: center;
+}
+.post_single_page h2{
+    font-size: 20px;
+    font-weight: bold;
+}
+.post_single_page strong{
+    font-size: 16px;
+    font-weight: bold;
+}
+.post_single_page img{
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
 }
 
 /*ADMIN*/
@@ -93,7 +217,7 @@ a.nav-link{
     background-color: #7A2F1F;
     color: #ffffff;
 }
-/*add button admin*/
+/*add button admin: green button*/
 .link_add {
     display: block;
     width: 50%;
@@ -107,6 +231,7 @@ a.nav-link{
     background-color: #218838;
     border-color: #1e7e34;
 }
+
 /*button small: warning and danger*/
 .btn-xs {
     padding: 1px 5px;
@@ -144,7 +269,6 @@ a.nav-link{
     border-radius: 3px;
     font-size: 13px;
 }
-
 .url_ok {
     display: block;
     border: 1px solid #28a745;
@@ -156,7 +280,7 @@ a.nav-link{
     font-size: 13px;
 }
 
-/*admin page buttons: edit*/
+/*admin page buttons: edit -> all pages in top right*/
 .admin_page_buttons_edit {
     text-align: right;
 }
@@ -170,42 +294,22 @@ a.nav-link{
     border-top: 1px dashed #0089fa;
     margin: 5px 0 25px;
 }
-
-/*admin parent badge*/
-.badge {
-    display: inline-block;
-    min-width: 10px;
-    padding: 3px 7px;
+/*admin red stars*/
+.star{
+    color: #ff0000;
+}
+/*admin text footnote red stars*/
+.footnote {
     font-size: 12px;
-    font-weight: 700;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    background-color: #777;
-    border-radius: 10px;
+    font-family: monospace;
+    margin-bottom: 20px;
 }
-/*paginate*/
-.page-link {
-    position: relative;
-    display: block;
-    padding: .5rem .75rem;
-    margin-left: -1px;
-    line-height: 1.25;
-    color: #ac2925;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
+
+/* template: admin.categories_menu.edit - select parent in children categories*/
+select.admin_select_parent_menu {
+    border: none;
+    color: #000000;
+    -webkit-appearance: none;
 }
-.page-item.active .page-link {
-    z-index: 1;
-    color: #fff;
-    background-color: #ac2925;
-    border-color: #ac2925;
-}
-.page-link:hover {
-    color: #ffffff;
-    text-decoration: none;
-    background-color: #d9534f;
-    border-color: #d9534f;
-}
+
+
