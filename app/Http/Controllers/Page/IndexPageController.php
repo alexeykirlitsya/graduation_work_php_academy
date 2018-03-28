@@ -9,6 +9,7 @@ use App\Mail\Contact;
 use App\Models\Category;
 use App\Models\Page;
 use App\Models\Post;
+use App\Models\Comment;
 
 class IndexPageController extends Controller
 {
@@ -61,8 +62,27 @@ class IndexPageController extends Controller
     {
         $post = Post::whereSlug($slug)->firstOrFail();
         $last_posts = Post::orderBy('id', 'desc')->limit(5)->get();
-        //$last_posts = Post::take(3)->get();
-//        dd($last_posts);
         return view('post.show')->with('post', $post)->with('last_posts', $last_posts);
+    }
+
+    public function postCommentsPost(Request $request)
+    {
+        $this->validate($request,[
+            'title' => 'required|max:100',
+            'email' => 'required|email|max:191',
+            'comment' => 'required|min:5|max:2000',
+        ]);
+
+        $post_id = $request->post_id;
+        $post = Post::find($post_id);
+        $comment = new Comment();
+        $comment->title = $request->title;
+        $comment->email = $request->email;
+        $comment->comment = $request->comment;
+        $comment->post()->associate($post);
+
+        $comment->save();
+
+        return redirect()->route('post.page',$post->slug)->with('success', 'Комментарий успешно добавлен');
     }
 }

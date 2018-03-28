@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title')
-    <title>Страница редактирования поста</title>
-@endsection
+@section('title', 'Страница редактирования поста')
 
 @section('content')
     <div class="col-md-12 well">

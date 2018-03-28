@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title')
-    <title>Страница администратора: меню категорий</title>
-@endsection
+@section('title', 'Страница администратора: меню категорий')
 
 @section('content')
     <a href="{{route('categories-menu.create')}}" class="btn link_add">Добавить новый пункт в меню категорий</a>
@@ -21,7 +19,7 @@
                     </thead>
                     <tbody>
                     @foreach($menu_parent as $parent)
-                        <tr class="tr">
+                        <tr>
                             <td>{{ $parent->title }}</td>
                             <td>{{ $parent->weight }}</td>
                             <td>

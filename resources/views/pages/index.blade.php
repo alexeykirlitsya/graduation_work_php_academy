@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'Главная страница')
+
 @section('description')
     Домашние рецепты вкусных блюд от Татьяны. Множество рецептов с пошаговыми фотографиями.
-@endsection
-
-@section('title')
-    <title>Главная страница</title>
 @endsection
 
 @section('content')

@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title')
-    <title>Страница администратора: категории</title>
-@endsection
+@section('title', 'Страница администратора: категории')
 
 @section('content')
     <a href="{{route('categories.create')}}" class="btn link_add">Добавить новую категорию</a>

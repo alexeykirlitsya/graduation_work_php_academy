@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
-@section('title')
-    <title>Страница администратора</title>
-@endsection
-
-@section('styles')
-@endsection
+@section('title', 'Страница администратора')
 
 @section('content')
     <h2>Основная информация</h2>
@@ -31,7 +26,4 @@
 
 @section('sidebar')
     @include('admin.sidebar')
-@endsection
-
-@section('scripts')
 @endsection

@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title')
-    <title>Страница администратора: главное меню</title>
-@endsection
+@section('title', 'Страница администратора: главное меню')
 
 @section('content')
     <a href="{{route('main-menu.create')}}" class="btn link_add">Добавить пункт меню</a>

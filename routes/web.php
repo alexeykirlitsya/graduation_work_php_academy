@@ -18,8 +18,10 @@ Route::get('/category/{slug}','Page\IndexPageController@showCategoryPage')->name
 //post
 Route::get('/post/{slug}','Page\IndexPageController@showPostPage')->name('post.page')->where('slug', '[\w\d\-\_]+');
 
+//comments in the single post
+Route::post('/comments','Page\IndexPageController@postCommentsPost')->name('post.comment.store');
 
-//Admin
+/**** ADMIN *****/
 Route::group(['prefix' => 'admin',  'middleware' => 'auth'],function () {
     //admin home page
     Route::get('/','Admin\PageController@home')->name('admin.home');
@@ -33,7 +35,10 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'],function () {
     Route::resource('/categories', 'Admin\CategoriesController');
     //posts
     Route::resource('/posts', 'Admin\PostsController');
+    //comments
+    Route::resource('/comments', 'Admin\CommentsController')->except(['create', 'store']);
 });
 
+/**** AUTH *****/
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

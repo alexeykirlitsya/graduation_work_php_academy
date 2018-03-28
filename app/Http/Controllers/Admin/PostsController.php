@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Comment;
 
 class PostsController extends Controller
 {
@@ -197,6 +198,8 @@ class PostsController extends Controller
     public function destroy($slug)
     {
         $post = Post::whereSlug($slug)->firstOrFail();
+
+        $post_id = $post->id;
 
         //Del images
         $oldImg = $post->img;

@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title')
-    <title>Страница администратора: страницы</title>
-@endsection
+@section('title', 'Страница администратора: страницы')
 
 @section('content')
     <a href="{{route('pages.create')}}" class="btn link_add">Добавить новую страницу</a>

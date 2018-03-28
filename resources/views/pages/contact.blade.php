@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'Контакты')
+
 @section('description')
     Страница с формой обратной связи. Средства связи с автором кулинарного блога Вкуснятинка.
-@endsection
-
-@section('title')
-    <title>Контакты</title>
 @endsection
 
 @section('content')

@@ -11,7 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 {{--Title--}}
-@yield('title')
+    <title>@yield('title')</title>
 
 <!-- Styles -->
     @include('layouts.styles')

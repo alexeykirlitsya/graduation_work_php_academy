@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
+@section('title', $category->title)
+
 @section('description')
     {{$category->title}} - категория кулинарны рецептов блога Вкуснятинка
-@endsection
-
-@section('title')
-    <title>{{$category->title}}</title>
 @endsection
 
 @section('content')

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>Страница пользователя: {{$user->name}}</title>
+Страница пользователя: {{$user->name}}
 @endsection
 
 @section('content')

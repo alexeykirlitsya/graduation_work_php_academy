@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title')
-    <title>Страница редактирования пункта главного меню</title>
-@endsection
+@section('title', 'Страница редактирования пункта главного меню')
 
 @section('content')
     <div class="col-md-12 well">

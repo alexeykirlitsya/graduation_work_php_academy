@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title')
-    <title>Страница администратора: посты</title>
-@endsection
+@section('title', 'Страница администратора: посты')
 
 @section('content')
     <a href="{{route('posts.create')}}" class="btn link_add">Добавить новый пост</a>
