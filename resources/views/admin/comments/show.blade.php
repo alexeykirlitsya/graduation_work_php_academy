@@ -16,17 +16,19 @@
                 <div class="admin_comment_title">Название рецепта:</div>
                 {{ $comment->post->title }}
             </div>
-            <div class="row">
-                <div class="col-md-5 admin_comment_show_block">
-                    <div class="admin_comment_title">Автор:</div>
-                    {{ $comment->title }}
-                </div>
-                <div class="col-md-5 admin_comment_show_block">
-                    <div class="admin_comment_title">Email:</div>
-                    {{ $comment->email }}
-                </div>
+            <div class="form-group admin_comment_show_block">
+                <div class="admin_comment_title">Автор:</div>
+                {{ $comment->title }}
             </div>
-            <div class="col-md-12 admin_comment_show_block">
+            <div class="form-group admin_comment_show_block">
+                <div class="admin_comment_title">Email:</div>
+                {{ $comment->email }}
+            </div>
+            <div class="form-group admin_comment_show_block">
+                <div class="admin_comment_title">Дата:</div>
+                {{ $comment->created_at }}
+            </div>
+            <div class="admin_comment_show_block">
                 <div class="admin_comment_title">Комментарий:</div>
                 {!! $comment->comment !!}
             </div>

@@ -1,13 +1,10 @@
 <!-- Search Widget -->
 <div class="card my-4">
-    <h5 class="card-header">Search</h5>
+    <h5 class="card-header">Поиск рецепта</h5>
     <div class="card-body">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
-        </div>
+        <form action="{{route('search')}}" method="GET">
+            <input type="text" name="search" class="form-control" placeholder="Название рецепта">
+        </form>
     </div>
 </div>
 
@@ -42,6 +39,20 @@
     </div>
 </div>
 
-
-
-
+<!-- Last comments HOME PAGE - logout index page-->
+@if(Route::is('index.page'))
+    <!-- Last comments-->
+    <div class="card my-4">
+        <h5 class="card-header">Последние комментарии</h5>
+        <div class="card-body">
+            <div class="input-group">
+                @foreach($comments as $comment)
+                    <div class="comments_index_page">
+                        <div class="comments_index_page_title">{{ $comment->post->title }}</div>
+                        <div>{!! $comment->comment !!}</div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+@endif

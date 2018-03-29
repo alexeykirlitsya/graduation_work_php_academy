@@ -5,25 +5,33 @@ namespace App\Http\Controllers\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use Auth;
+use App\User;
 use App\Mail\Contact;
 use App\Models\Category;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\Comment;
+use Purifier;
+
 
 class IndexPageController extends Controller
 {
+    //1. Home page - index
     public function showHomePage()
     {
-        $posts = Post::orderBy('id', 'desc')->paginate(4);
-        return view('pages.index')->with('posts', $posts);
+        $posts = Post::orderBy('id', 'desc')->paginate(5);
+        $comments = Comment::OrderBy('id', 'desc')->limit(5)->get();
+        return view('pages.index')->with('posts', $posts)->with('comments', $comments);
     }
 
+    //2. Contact page show
     public function showContactPage()
     {
         return view('pages.contact');
     }
 
+    //3. Contact page post
     public function postContactPage(Request $request)
     {
         $this->validate($request, [
@@ -40,6 +48,7 @@ class IndexPageController extends Controller
         return redirect()->route('contact.page')->with('success', 'Ваше письмо было успешно отправлено!');
     }
 
+    //4. Category single page
     public function showCategoryPage($slug)
     {
         $category = Category::whereSlug($slug)->firstOrFail();
@@ -52,37 +61,61 @@ class IndexPageController extends Controller
         return view('category.index')->with('category', $category)->with('posts', $posts);
     }
 
+    //5. Page single
     public  function showSinglePage($slug)
     {
         $page = Page::whereSlug($slug)->firstOrFail();
         return view('page.show')->with('page', $page);
     }
 
+    //6. Post single page
     public  function showPostPage($slug)
     {
         $post = Post::whereSlug($slug)->firstOrFail();
         $last_posts = Post::orderBy('id', 'desc')->limit(5)->get();
-        return view('post.show')->with('post', $post)->with('last_posts', $last_posts);
+
+
+        return view('post.show',[
+            'post' => $post,
+            'last_posts' => $last_posts
+        ]);
     }
 
+    //7. Comment request in the single post page
     public function postCommentsPost(Request $request)
     {
         $this->validate($request,[
-            'title' => 'required|max:100',
-            'email' => 'required|email|max:191',
+            'title' => 'max:100',
+            'email' => 'email|max:191',
             'comment' => 'required|min:5|max:2000',
         ]);
 
         $post_id = $request->post_id;
         $post = Post::find($post_id);
         $comment = new Comment();
-        $comment->title = $request->title;
+        $comment->title = Purifier::clean($request->title);
         $comment->email = $request->email;
-        $comment->comment = $request->comment;
+
+        //name and email auth users
+        if(!Auth::guest()){
+            $user_id = auth()->user()->id;
+            $user = User::find($user_id);
+            $comment->title = $user->name;
+            $comment->email = $user->email;
+        }
+
+        $comment->comment = Purifier::clean($request->comment);
         $comment->post()->associate($post);
 
         $comment->save();
 
         return redirect()->route('post.page',$post->slug)->with('success', 'Комментарий успешно добавлен');
+    }
+    //8. Search
+    public function search(Request $searchKey)
+    {
+        $searchKey = $searchKey->search;
+        $posts = Post::search($searchKey)->paginate(5);
+        return view('search.index')->with('posts', $posts);
     }
 }

@@ -15,7 +15,7 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $pages = Page::orderBy('id', 'desc')->paginate(10);
+        $pages = Page::orderBy('id', 'desc')->paginate(5);
         return view('admin.pages.index')->with('pages', $pages);
     }
 

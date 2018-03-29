@@ -21,8 +21,11 @@ Route::get('/post/{slug}','Page\IndexPageController@showPostPage')->name('post.p
 //comments in the single post
 Route::post('/comments','Page\IndexPageController@postCommentsPost')->name('post.comment.store');
 
+// Search
+Route::get('/search}', 'Page\IndexPageController@search')->name('search');
+
 /**** ADMIN *****/
-Route::group(['prefix' => 'admin',  'middleware' => 'auth'],function () {
+Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin']],function () {
     //admin home page
     Route::get('/','Admin\PageController@home')->name('admin.home');
     //admin main menu
@@ -37,6 +40,8 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'],function () {
     Route::resource('/posts', 'Admin\PostsController');
     //comments
     Route::resource('/comments', 'Admin\CommentsController')->except(['create', 'store']);
+    //users
+    Route::get('/users', 'Admin\UsersController@getAllUsers')->name('admin.users');
 });
 
 /**** AUTH *****/

@@ -3,7 +3,7 @@
 @section('title', 'Страница администратора: посты')
 
 @section('content')
-    <a href="{{route('posts.create')}}" class="btn link_add">Добавить новый пост</a>
+    <a href="{{route('posts.create')}}" class="btn link_add">Добавить новую публикацию</a>
     <div class="col-md-12">
         @if(count($posts) > 0)
             <table class="table">

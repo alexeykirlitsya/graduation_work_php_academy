@@ -9,8 +9,7 @@
 @section('content')
     <div class="col-md-12">
         <div class="well">
-            <h1 class="h1_message">Главная</h1>
-            <div style="text-align: justify">Описание главной страницы</div>
+            <h1 class="h1_message">Домашние рецепты вкусных блюд</h1>
             @foreach($posts as $post)
                 <div class="post_on_cat_page">
                     <div class="post_on_cat_page_title"><a href="{{ route('post.page', $post->slug) }}">{{$post->title}}</a></div>
@@ -27,7 +26,7 @@
                         @else
                             <a href="{{route('category.page', $post->category->slug)}}">{{ $post->category->title }}</a>
                         @endif
-                        | Дата публикации: {{date('m.d.y', strtotime($post->created_at))}} | Автор: {{$post->user->name}}</div>
+                        | Дата публикации: {{date('m.d.y', strtotime($post->created_at))}} | Автор: {{$post->user->name}} | Комментариев: {{$post->comments()->count()}}</div>
                 </div>
             @endforeach
             {{$posts->links()}}

@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
     use Sluggable;
+    use Searchable;
 
     protected $table = 'posts';
 

@@ -19,7 +19,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('id', 'desc')->paginate(10);
+        $posts = Post::orderBy('id', 'desc')->paginate(5);
         return view('admin.posts.index')->with('posts', $posts);
     }
 
@@ -172,8 +172,9 @@ class PostsController extends Controller
                 Storage::delete('public/posts/' . $oldImgSmall);
             }
 
-        } else {
-            $filenametostore = 'default.jpg';
+            //save new images
+            $post->img = 'big_'.$filenametostore;
+            $post->img_small = 'small_'.$filenametostore;
         }
 
         $post->title = $request->title;
@@ -181,8 +182,7 @@ class PostsController extends Controller
         $post->slug = $request->slug;
         $post->text = $request->text;
         $post->category_id = $request->category_id;
-        $post->img = 'big_'.$filenametostore;
-        $post->img_small = 'small_'.$filenametostore;
+
 
         $post->save();
 
