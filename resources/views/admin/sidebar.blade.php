@@ -11,7 +11,7 @@
                     <a href="{{route('categories.index')}}" class="{{Route::is('categories.index') ? 'active' : ''}}">Категории</a>
                     <a href="{{route('posts.index')}}" class="{{Route::is('posts.index') ? 'active' : ''}}">Публикации</a>
                     <a href="{{route('comments.index')}}" class="{{Route::is('comments.index') ? 'active' : ''}}">Комментарии</a>
-                    <a href="{{route('admin.users')}}" class="{{Route::is('admin.users') ? 'active' : ''}}">Пользователи</a>
+                    <a href="{{route('users.index')}}" class="{{Route::is('users.index') ? 'active' : ''}}">Пользователи</a>
                 </div>
             </div>
         </div>

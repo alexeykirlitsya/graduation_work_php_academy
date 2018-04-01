@@ -44,15 +44,23 @@
     <!-- Last comments-->
     <div class="card my-4">
         <h5 class="card-header">Последние комментарии</h5>
-        <div class="card-body">
-            <div class="input-group">
-                @foreach($comments as $comment)
-                    <div class="comments_index_page">
-                        <div class="comments_index_page_title">{{ $comment->post->title }}</div>
-                        <div>{!! $comment->comment !!}</div>
+        <div class="index_page_sidebar_comments">
+            @foreach($comments as $comment)
+                <div class="index_page_sidebar_single_comment">
+                    <div class="index_page_sidebar_comments_title">
+                        <a href="{{route('post.page', $comment->post->slug)}}">
+                            {{ $comment->post->title }}
+                        </a>
                     </div>
-                @endforeach
-            </div>
+                    <div class="index_page_sidebar_comments_text">
+                        {!!  mb_substr($comment->comment,  0, 90) !!} {{ strlen($comment->comment) > 90 ? '...' : '' }}
+                    </div>
+                    <div class="index_page_sidebar_comments_info">
+                        Автор: {{ $comment->title }}
+                        <span>Дата: {{date('m.d.y', strtotime($comment->post->created_at))}}</span>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 @endif

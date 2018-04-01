@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="dashed_line_cat_index_page"></div>
-                    <div class=" post_on_cat_page_info">Категория:
+                    <div class="post_on_cat_page_info">Категория:
                         @if($post->category_id == null)
                             Без категории
                         @else
@@ -29,7 +29,7 @@
                         | Дата публикации: {{date('m.d.y', strtotime($post->created_at))}} | Автор: {{$post->user->name}} | Комментариев: {{$post->comments()->count()}}</div>
                 </div>
             @endforeach
-            {{$posts->links()}}
+                {{$posts->links()}}
         </div>
     </div>
 @endsection

@@ -71,7 +71,7 @@ class PostsController extends Controller
 
             //Resize image small
             $thumbnailpath = public_path('storage/posts/small_'.$filenametostore);
-            Image::make($thumbnailpath)->resize(150, 100)->save($thumbnailpath);
+            Image::make($thumbnailpath)->resize(100, 67)->save($thumbnailpath);
 
         } else{
             $filenametostore = 'default.jpg';
@@ -160,7 +160,7 @@ class PostsController extends Controller
 
             //Resize image small
             $thumbnailpath = public_path('storage/posts/small_' . $filenametostore);
-            Image::make($thumbnailpath)->resize(150, 100)->save($thumbnailpath);
+            Image::make($thumbnailpath)->resize(100, 67)->save($thumbnailpath);
 
             //Del images
             $oldImg = $post->img;

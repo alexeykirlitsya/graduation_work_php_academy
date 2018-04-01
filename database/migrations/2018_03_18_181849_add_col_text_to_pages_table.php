@@ -26,7 +26,7 @@ class AddColTextToPagesTable extends Migration
     public function down()
     {
         Schema::table('pages', function (Blueprint $table) {
-            $table->text('text')->after('slug');
+            $table->text('text');
         });
     }
 }

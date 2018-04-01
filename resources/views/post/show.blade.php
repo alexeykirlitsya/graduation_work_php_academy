@@ -43,6 +43,17 @@
             <div class="col-md-12">
                 @foreach($post->comments as $comment)
                     <div class="comment panel panel-default">
+                        @if(!Auth::guest())
+                            @if(Auth::user()->role == 1)
+                                <div class="post_single_page_admin_buttons text-right">
+                                    <div style="display: block; float: left;"><a href="{{route('comments.edit', $comment->id)}}" class="btn btn-warning btn-xs">Редактировать</a></div>
+                                    {{Form::open(['action' => ['Admin\CommentsController@destroy', $comment->id], 'method' => 'DELETE'])}}
+                                    {{Form::submit('Удалить', ['class' => 'btn btn-danger btn-xs'])}}
+                                    @csrf
+                                    {{Form::close()}}
+                                </div>
+                            @endif
+                        @endif
                         <div class="author-info">
                             <img src="{{ "https://www.gravatar.com/avatar/" . md5(strtolower(trim($comment->email))) . "?s=50&d=identicon" }}" class="author-image">
                             <div class="author-name">
@@ -107,7 +118,7 @@
                 <div class="col-md-12">
                     <div class="row">
                     <div class="col-md-5">
-                        <img src="{{asset('storage/posts/'. $new->img_small)}}" alt="" class="img-thumbnail" style="width: 100px">
+                        <img src="{{asset('storage/posts/'. $new->img_small)}}" alt="" class="img-thumbnail">
                     </div>
                     <div class="col-md-7">
                         <a href="{{route('post.page', $new->slug)}}">{{ $new->title}}</a>

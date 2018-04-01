@@ -26,7 +26,7 @@ class AddColDescriptionToPagesTable extends Migration
     public function down()
     {
         Schema::table('pages', function (Blueprint $table) {
-            $table->string('description')->after('slug');
+            $table->string('description');
         });
     }
 }

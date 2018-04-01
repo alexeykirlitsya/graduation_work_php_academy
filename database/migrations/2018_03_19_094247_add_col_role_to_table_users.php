@@ -26,7 +26,7 @@ class AddColRoleToTableUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->after('email');
+            $table->string('role');
         });
     }
 }

@@ -41,7 +41,7 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin']],function (
     //comments
     Route::resource('/comments', 'Admin\CommentsController')->except(['create', 'store']);
     //users
-    Route::get('/users', 'Admin\UsersController@getAllUsers')->name('admin.users');
+    Route::resource('/users', 'Admin\UsersController');
 });
 
 /**** AUTH *****/

@@ -136,17 +136,41 @@ a.nav-link{
 }
 
 /*HOME PAGE - logout index page*/
-.comments_index_page {
-    padding: .25rem;
-    background-color: #f5f8fa;
+.index_page_sidebar_comments{
+    padding: 10px;
+}
+.index_page_sidebar_single_comment{
+    margin-bottom: 5px;
     border: 1px solid #dee2e6;
     border-radius: .25rem;
+}
+.index_page_sidebar_comments_title {
+    padding: .25rem;
+    background-color: #f5f8fa;
+    border-radius: .25rem .25rem 0 0;
+}
+.index_page_sidebar_comments_title a{
+     font-family: 'Yanone Kaffeesatz', sans-serif;
+     font-size: 20px;
+}
+.index_page_sidebar_comments_text {
+    padding: .25rem;
     margin: 2px 0;
 }
-.comments_index_page_title{
-    font-size: 18px;
-    font-family: unset;
+.index_page_sidebar_comments_info{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 16px;
+    color: #c2c1c1;
+    padding: 0 8px;
+    border-top: 1px dashed #ccc;
 }
+.index_page_sidebar_comments_info span{
+    float: right;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 16px;
+    color: #c2c1c1;
+}
+
 /*CATEGORY PAGE - logout category index page*/
 
 /* logout category index page - block single post*/
@@ -406,5 +430,3 @@ select.admin_select_parent_menu {
     padding: 5px;
     margin: 5px auto;
 }
-
-

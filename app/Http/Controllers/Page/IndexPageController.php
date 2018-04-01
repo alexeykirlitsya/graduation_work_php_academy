@@ -94,6 +94,8 @@ class IndexPageController extends Controller
         $post = Post::find($post_id);
         $comment = new Comment();
         $comment->title = Purifier::clean($request->title);
+        $comment->title = substr($comment->title, 3); // teg '<p>' author name
+        $comment->title = substr($comment->title, 0,-4); // teg '</p>' author name
         $comment->email = $request->email;
 
         //name and email auth users
@@ -111,6 +113,7 @@ class IndexPageController extends Controller
 
         return redirect()->route('post.page',$post->slug)->with('success', 'Комментарий успешно добавлен');
     }
+
     //8. Search
     public function search(Request $searchKey)
     {

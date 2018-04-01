@@ -20,7 +20,6 @@
         @csrf
         {!! Form::close() !!}
     </div>
-    <hr>
 @endsection
 
 @section('sidebar')
