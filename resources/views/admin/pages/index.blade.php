@@ -31,7 +31,7 @@
                             <td>
                                 {{Form::open(['action' => ['Admin\PagesController@destroy', $page->slug], 'method' => 'DELETE'])}}
                                 {{Form::submit('Удалить', ['class' => 'btn btn-danger btn-xs'])}}
-                                @csrf
+                                {{--@csrf--}}
                                 {{Form::close()}}
                             </td>
                         </tr>

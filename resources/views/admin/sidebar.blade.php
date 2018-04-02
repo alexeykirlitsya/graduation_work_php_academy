@@ -17,3 +17,13 @@
         </div>
     </div>
 </div>
+
+<!-- Search Widget -->
+<div class="card my-4">
+    <h5 class="card-header">Поиск рецепта</h5>
+    <div class="card-body">
+        <form action="{{route('search')}}" method="GET">
+            <input type="text" name="search" class="form-control" placeholder="Название рецепта">
+        </form>
+    </div>
+</div>

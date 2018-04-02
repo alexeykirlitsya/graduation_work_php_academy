@@ -25,7 +25,7 @@
             <div class="form-group">
                 {{Form::submit('Добавить пункт меню', ['class' => 'btn btn-success'])}}
             </div>
-            @csrf
+            {{--@csrf--}}
         {!! Form::close() !!}
     </div>
 @endsection

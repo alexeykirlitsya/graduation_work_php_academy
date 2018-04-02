@@ -13,7 +13,7 @@
                         <div style="display: block; float: left;"><a href="{{route('posts.edit', $post->slug)}}" class="btn btn-warning btn-xs">Редактировать</a></div>
                         {{Form::open(['action' => ['Admin\PostsController@destroy', $post->slug], 'method' => 'DELETE'])}}
                         {{Form::submit('Удалить', ['class' => 'btn btn-danger btn-xs'])}}
-                        @csrf
+                        {{--@csrf--}}
                         {{Form::close()}}
                     </div>
                 @endif
@@ -49,7 +49,7 @@
                                     <div style="display: block; float: left;"><a href="{{route('comments.edit', $comment->id)}}" class="btn btn-warning btn-xs">Редактировать</a></div>
                                     {{Form::open(['action' => ['Admin\CommentsController@destroy', $comment->id], 'method' => 'DELETE'])}}
                                     {{Form::submit('Удалить', ['class' => 'btn btn-danger btn-xs'])}}
-                                    @csrf
+                                    {{--@csrf--}}
                                     {{Form::close()}}
                                 </div>
                             @endif
@@ -101,7 +101,7 @@
                     </div>
                 </div>
             </div>
-            @csrf
+            {{--@csrf--}}
             {{Form::close()}}
         </div>
     </div>

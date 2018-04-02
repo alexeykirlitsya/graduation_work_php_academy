@@ -36,7 +36,7 @@
         <div class="form-group">
             {{Form::submit('Обновить рецепт', ['class' => 'btn btn-success'])}}
         </div>
-        @csrf
+        {{--@csrf--}}
         {!! Form::close() !!}
     </div>
     <hr>

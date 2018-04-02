@@ -26,7 +26,7 @@
         <div class="form-group">
             {{Form::submit('Сохранить изменения', ['class' => 'btn btn-success'])}}
         </div>
-        @csrf
+        {{--@csrf--}}
         {!! Form::close() !!}
     </div>
     <hr>

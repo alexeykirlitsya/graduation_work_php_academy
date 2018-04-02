@@ -27,7 +27,7 @@
                         <td>
                             {{Form::open(['action' => ['Admin\UsersController@destroy', $user->id], 'method' => 'DELETE'])}}
                             {{Form::submit('Удалить', ['class' => 'btn btn-danger btn-xs'])}}
-                            @csrf
+                            {{--@csrf--}}
                             {{Form::close()}}
                         </td>
                     </tr>

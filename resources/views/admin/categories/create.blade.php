@@ -17,7 +17,7 @@
         <div class="form-group">
             {{Form::submit('Добавить категорию', ['class' => 'btn btn-success'])}}
         </div>
-        @csrf
+        {{--@csrf--}}
         {!! Form::close() !!}
     </div>
 @endsection

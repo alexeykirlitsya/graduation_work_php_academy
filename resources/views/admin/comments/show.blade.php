@@ -9,7 +9,7 @@
                 <div style="display: block; float: left;"><a href="{{route('comments.edit', $comment->id)}}" class="btn btn-warning btn-xs">Редактировать</a></div>
                 {{Form::open(['action' => ['Admin\CommentsController@destroy', $comment->id], 'method' => 'DELETE'])}}
                 {{Form::submit('Удалить', ['class' => 'btn btn-danger btn-xs'])}}
-                @csrf
+                {{--@csrf--}}
                 {{Form::close()}}
             </div>
             <div class="form-group admin_comment_show_block">

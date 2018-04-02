@@ -18,11 +18,10 @@
             {{Form::label('url', 'URL', ['class' => 'label_form'])}}
             {{Form::text('url', $menu->url, ['class' => 'form-control', 'placeholder' => 'url страницы'])}}
         </div>
-
         <div class="form-group">
             {{Form::submit('Сохранить изменения', ['class' => 'btn btn-success'])}}
         </div>
-        @csrf
+        {{--@csrf--}}
         {!! Form::close() !!}
     </div>
     <hr>

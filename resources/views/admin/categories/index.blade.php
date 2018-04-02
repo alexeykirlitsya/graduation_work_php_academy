@@ -26,7 +26,7 @@
                         <td>
                             {{Form::open(['action' => ['Admin\CategoriesController@destroy', $category->slug], 'method' => 'DELETE'])}}
                             {{Form::submit('Удалить', ['class' => 'btn btn-danger btn-xs'])}}
-                            @csrf
+                            {{--@csrf--}}
                             {{Form::close()}}
                         </td>
                     </tr>

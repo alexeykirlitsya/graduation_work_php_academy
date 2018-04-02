@@ -22,7 +22,7 @@
             <div class="form-group">
                 {{Form::submit('Добавить страницу', ['class' => 'btn btn-success'])}}
             </div>
-            @csrf
+            {{--@csrf--}}
         {!! Form::close() !!}
     </div>
 @endsection

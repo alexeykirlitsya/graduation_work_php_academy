@@ -11,16 +11,14 @@
                     <th>Пост</th>
                     <th>Автор</th>
                     <th>Email</th>
-                    <th>Дата</th>
                     <th></th>
                 </thead>
                 <tbody>
                 @foreach($comments as $comment)
                     <tr>
-                        <td>{{ $comment->post->title }}</td>
+                        <td><a href="{{ route('post.page', $comment->post->slug) }}" target="_blank">{{ $comment->post->title }}</a></td>
                         <td>{!! $comment->title !!}</td>
                         <td>{{ $comment->email }}</td>
-                        <td>{{ $comment->created_at }}</td>
                         <td>
                             <a href="{{route('comments.show', $comment->id)}}" class="btn btn-success btn-xs">Просмотреть</a>
                         </td>

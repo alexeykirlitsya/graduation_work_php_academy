@@ -28,7 +28,7 @@
                 <div class="form-group">
                     {{Form::submit('Отправить письмо', ['class' => 'btn btn-form'])}}
                 </div>
-                @csrf
+                {{--@csrf--}}
                 {!! Form::close() !!}
             </div>
         </div>

@@ -28,7 +28,7 @@
         <div class="form-group">
             {{Form::submit('Опубликовать рецепт', ['class' => 'btn btn-success'])}}
         </div>
-        @csrf
+        {{--@csrf--}}
         {!! Form::close() !!}
     </div>
 @endsection

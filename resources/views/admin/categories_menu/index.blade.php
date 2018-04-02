@@ -87,7 +87,7 @@
                             <td>
                                 {{Form::open(['action' => ['Admin\CategoriesMenuController@destroy', $children->id], 'method' => 'DELETE'])}}
                                 {{Form::submit('Удалить', ['class' => 'btn btn-danger btn-xs'])}}
-                                @csrf
+                                {{--@csrf--}}
                                 {{Form::close()}}
                             </td>
                         </tr>
