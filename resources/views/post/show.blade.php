@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="post_single_page">
             @if(!Auth::guest())
-                @if(Auth::user()->role == 1)
+                @if(Auth::user()->role->title == 'admin')
                     <div class="post_single_page_admin_buttons text-right">
                         <div style="display: block; float: left;"><a href="{{route('posts.edit', $post->slug)}}" class="btn btn-warning btn-xs">Редактировать</a></div>
                         {{Form::open(['action' => ['Admin\PostsController@destroy', $post->slug], 'method' => 'DELETE'])}}
@@ -44,7 +44,7 @@
                 @foreach($post->comments as $comment)
                     <div class="comment panel panel-default">
                         @if(!Auth::guest())
-                            @if(Auth::user()->role == 1)
+                            @if(Auth::user()->role->title == 'admin')
                                 <div class="post_single_page_admin_buttons text-right">
                                     <div style="display: block; float: left;"><a href="{{route('comments.edit', $comment->id)}}" class="btn btn-warning btn-xs">Редактировать</a></div>
                                     {{Form::open(['action' => ['Admin\CommentsController@destroy', $comment->id], 'method' => 'DELETE'])}}

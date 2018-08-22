@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="dashed_line_cat_index_page"></div>
-                        <div class=" post_on_cat_page_info">Дата публикации: {{date('m.d.y', strtotime($post->created_at))}} | Автор: {{$post->user->name}} | Комментариев: {{$post->comments()->count()}}</div>
+                        <div class=" post_on_cat_page_info">Дата публикации: {{date('d.m.y', strtotime($post->created_at))}} | Автор: {{$post->user->name}} | Комментариев: {{$post->comments()->count()}}</div>
                     </div>
                 @endforeach
             {{$posts->links()}}

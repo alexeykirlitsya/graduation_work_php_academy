@@ -11,15 +11,15 @@
             <div class="card-body">
                 <h4><span style="font-size: 16px">Имя:</span> {{ $user->name }}</h4>
                 <h4><span style="font-size: 16px">E-mail:</span> {{ $user->email }}</h4>
-                <h4><span style="font-size: 16px">Роль:</span> {{ $user->role == 1 ? 'Администратор' : 'Пользователь'}} </h4>
+                <h4><span style="font-size: 16px">Роль:</span> {{ Auth::user()->role->title }} </h4>
                 @if(!Auth::guest())
-                    @if(Auth::user()->role == 1)
+                    @if(Auth::user()->role->title == 'admin')
                         <br>
                         <div class="dashed_line_cat_index_page"></div>
                         <br>
                         <h4 style="text-align: center">Ваши рецепты</h4>
                         <br>
-                        @if(count($posts) >0)
+                        @if(count($posts) > 0)
                             <table class="table text-left">
                                 <thead>
                                 <th style="width: 180px">Рецепт</th>

@@ -25,7 +25,7 @@ Route::post('/comments','Page\IndexPageController@postCommentsPost')->name('post
 Route::get('/search}', 'Page\IndexPageController@search')->name('search');
 
 /**** ADMIN *****/
-Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin']],function () {
+Route::group(['prefix' => 'admin',  'middleware' => ['auth','role:admin']],function () {
     //admin home page
     Route::get('/','Admin\PageController@home')->name('admin.home');
     //admin main menu

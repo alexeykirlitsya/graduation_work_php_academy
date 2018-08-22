@@ -39,16 +39,16 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'role' => 'required|integer|max:1',
             'name' => 'required|string|max:191',
             'email' => 'required|string|email|max:191|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'role_id' => 'required|integer|max:2',
         ]);
 
         User::create([
-            'role' => $request->role,
             'name' => $request->name,
             'email' => $request->email,
+            'role_id' => $request->role_id,
             'password' => Hash::make($request['password']),
         ]);
 
@@ -88,7 +88,6 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'role' => 'required|integer|max:1',
             'name' => 'required|string|max:191',
             'email' => [
                 'required',
@@ -98,12 +97,13 @@ class UsersController extends Controller
                 \Illuminate\Validation\Rule::unique('users')->ignore($id)
             ],
             'password' => 'nullable|string|min:6|confirmed',
+            'role_id' => 'required|integer|max:2',
         ]);
 
         $user = User::find($id);
-        $user->role = $request->role;
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->role_id = $request->role_id;
         $user->password == null ? : $user->password = Hash::make($request->password);
         $user->save();
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColWeightToTableMainMenus extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddColWeightToTableMainMenus extends Migration
      */
     public function up()
     {
-        Schema::table('main_menus', function (Blueprint $table) {
-            $table->tinyInteger('weight')->unsigned()->after('title');
+        Schema::create('roles', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title');
         });
     }
 
@@ -25,8 +26,6 @@ class AddColWeightToTableMainMenus extends Migration
      */
     public function down()
     {
-        Schema::table('main_menus', function (Blueprint $table) {
-            $table->tinyInteger('weight');
-        });
+        Schema::dropIfExists('roles');
     }
 }

@@ -57,7 +57,7 @@
                     </div>
                     <div class="index_page_sidebar_comments_info">
                         Автор: {{ $comment->title }}
-                        <span>Дата: {{date('m.d.y', strtotime($comment->post->created_at))}}</span>
+                        <span>Дата: {{date('d.m.y', strtotime($comment->created_at))}}</span>
                     </div>
                 </div>
             @endforeach

@@ -48,7 +48,7 @@ class PostsController extends Controller
     {
         $this->validate($request,[
             'title' => 'required|max:191',
-            'description' => 'required|max:100',
+            'description' => 'required|max:150',
             'text' => 'required',
             'img' => 'image|nullable|max:1999'
         ]);
@@ -134,7 +134,7 @@ class PostsController extends Controller
     {
         $this->validate($request,[
             'title' => 'required|max:191',
-            'description' => 'required|max:100',
+            'description' => 'required|max:150',
             'text' => 'required',
             'slug' => 'required|max:191',
             'img' => 'image|nullable|max:1999'

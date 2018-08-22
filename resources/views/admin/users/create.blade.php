@@ -7,8 +7,8 @@
         <p>Добавить нового пользователя:</p>
         {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
         <div class="form-group">
-            {{Form::label('role', 'Роль:', ['class' => 'label_form'])}}
-            {{Form::number('role', '', ['class' => 'form-control', 'placeholder' => 'администратор = 1, пользователь = 0'])}}
+            {{Form::label('role_id', 'Роль:', ['class' => 'label_form'])}}
+            {{Form::number('role_id', '', ['class' => 'form-control', 'placeholder' => 'администратор = 2, пользователь = 1'])}}
         </div>
         <div class="form-group">
             {{Form::label('name', 'Имя:', ['class' => 'label_form'])}}

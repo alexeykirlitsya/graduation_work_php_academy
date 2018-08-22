@@ -7,8 +7,8 @@
         <p>Редактирование данных пользователя:</p>
         {!! Form::open(['route' => ['users.update', $user->id], 'method' => 'PUT']) !!}
         <div class="form-group">
-            {{Form::label('role', 'Роль:', ['class' => 'label_form'])}}
-            {{Form::number('role', $user->role, ['class' => 'form-control', 'placeholder' => 'администратор = 1, пользователь = 0'])}}
+            {{Form::label('role_id', 'Роль:', ['class' => 'label_form'])}}
+            {{Form::number('role_id', $user->role, ['class' => 'form-control', 'placeholder' => 'администратор = 2, пользователь = 1'])}}
         </div>
         <div class="form-group">
             {{Form::label('name', 'Имя:', ['class' => 'label_form'])}}

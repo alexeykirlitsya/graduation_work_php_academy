@@ -26,7 +26,7 @@
                         @else
                             <a href="{{route('category.page', $post->category->slug)}}">{{ $post->category->title }}</a>
                         @endif
-                        | Дата публикации: {{date('m.d.y', strtotime($post->created_at))}} | Автор: {{$post->user->name}} | Комментариев: {{$post->comments()->count()}}</div>
+                        | Дата публикации: {{date('d.m.y', strtotime($post->created_at))}} | Автор: {{$post->user->name}} | Комментариев: {{$post->comments()->count()}}</div>
                 </div>
             @endforeach
                 {{$posts->links()}}

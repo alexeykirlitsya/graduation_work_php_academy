@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
             {{Form::label('description', 'Краткое описание', ['class' => 'label_form'])}}
-            {{Form::text('description', '', ['class' => 'form-control', 'placeholder' => 'Описание: не более 100 символов...'])}}
+            {{Form::text('description', '', ['class' => 'form-control', 'placeholder' => 'Описание: не более 150 символов...'])}}
         </div>
         <div class="form-group">
             {{Form::label('category_id', 'Категория', ['class' => 'label_form'])}}

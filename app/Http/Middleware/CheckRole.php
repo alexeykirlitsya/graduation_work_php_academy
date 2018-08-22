@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Auth;
 
-class IsAdmin
+class CheckRole
 {
     /**
      * Handle an incoming request.
@@ -14,12 +14,16 @@ class IsAdmin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, ...$roles)
     {
-        if (Auth::user() &&  Auth::user()->role == 1) {
-            return $next($request);
+        if (Auth::check()) {
+            $authUserRole = Auth::user()->role->title;
+            foreach ($roles as $role){
+                if($role == $authUserRole){
+                    return $next($request);
+                }
+            }
         }
-
         return redirect()->route('home')->with('error', 'Доступ к данному разделу разрешен только Администратору!');
     }
 }

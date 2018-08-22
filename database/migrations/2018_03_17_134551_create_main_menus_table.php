@@ -16,7 +16,8 @@ class CreateMainMenusTable extends Migration
         Schema::create('main_menus', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('slug')->unique();
+            $table->tinyInteger('weight')->unsigned();
+            $table->string('url')->unique();
             $table->timestamps();
         });
     }
