@@ -16,7 +16,7 @@ class PagesController extends Controller
     public function index()
     {
         $pages = Page::orderBy('id', 'desc')->paginate(5);
-        return view('admin.pages.index')->with('pages', $pages);
+        return view('admin.pages.index', compact('pages'));
     }
 
     /**
@@ -43,11 +43,7 @@ class PagesController extends Controller
             'text' => 'required'
         ]);
 
-        $page = new Page();
-        $page->title = $request->title;
-        $page->description = $request->description;
-        $page->text = $request->text;
-        $page->save();
+        Page::create($request->all());
 
         return redirect()->route('pages.index')->with('success', 'Новая страница «'.$request->title.'» добавлена!');
     }
@@ -60,10 +56,8 @@ class PagesController extends Controller
      */
     public function show($slug)
     {
-//        $page = Page::whereSlug($slug)->firstOrFail();
-//        return view('admin.pages.show')->with('page', $page);
-
         $page = Page::whereSlug($slug)->firstOrFail();
+
         return redirect(route('single.page', $page->slug), 301);
     }
 
@@ -76,7 +70,8 @@ class PagesController extends Controller
     public function edit($slug)
     {
         $page = Page::whereSlug($slug)->firstOrFail();
-        return view('admin.pages.edit')->with('page', $page);
+
+        return view('admin.pages.edit', compact('page'));
 
     }
 

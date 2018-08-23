@@ -28,6 +28,6 @@ class HomeController extends Controller
         $user = User::find($user_id);
         $posts = $user->posts()->paginate(10);
 
-        return view('home')->with('user', $user)->with('posts', $posts);
+        return view('home', compact('user', 'posts'));
     }
 }

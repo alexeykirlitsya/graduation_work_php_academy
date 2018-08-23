@@ -17,7 +17,8 @@ class MainMenuController extends Controller
     public function index()
     {
         $menu = MainMenu::all();
-        return view('admin.main_menu.index')->with('menu', $menu);
+
+        return view('admin.main_menu.index', compact('menu'));
     }
 
     /**
@@ -79,7 +80,8 @@ class MainMenuController extends Controller
     public function edit($id)
     {
         $menu = MainMenu::find($id);
-        return view('admin.main_menu.edit')->with('menu', $menu);
+
+        return view('admin.main_menu.edit', compact('menu'));
     }
 
     /**

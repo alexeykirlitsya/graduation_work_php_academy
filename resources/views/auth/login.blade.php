@@ -55,6 +55,13 @@
                                     {{ __('Забыли пароль?') }}
                                 </a>
                             </div>
+                            <div class="col-md-8 offset-md-4" style="margin: 0 auto; text-align: center;">
+                                <hr>
+                                <p>Login with social media</p>
+                                <a class="btn btn-danger" href="{{ url('login/google') }}">
+                                    {{ __('Google') }}
+                                </a>
+                            </div>
                         </div>
                     </form>
                 </div>

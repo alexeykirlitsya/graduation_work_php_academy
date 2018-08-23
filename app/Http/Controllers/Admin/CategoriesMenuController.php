@@ -24,7 +24,7 @@ class CategoriesMenuController extends Controller
             $parent_item[$value->id] = $value->title;
         }
 
-        return view('admin.categories_menu.index')->with('menu_parent', $menu_parent)->with('menu_children', $menu_children)->with('parent_item', $parent_item);
+        return view('admin.categories_menu.index', compact('menu_parent', 'menu_children', 'parent_item'));
     }
 
     /**
@@ -46,7 +46,7 @@ class CategoriesMenuController extends Controller
             $parent_item[$value->id] = $value->title;
         }
 
-        return view('admin.categories_menu.create')->with('menu_parent', $menu_parent)->with('parent_item', $parent_item);
+        return view('admin.categories_menu.create', compact('menu_parent', 'parent_item'));
     }
 
     /**
@@ -112,7 +112,7 @@ class CategoriesMenuController extends Controller
             $parent_item[$value->id] = $value->title;
         }
 
-        return view('admin.categories_menu.edit')->with('item', $item)->with('parent_item', $parent_item);
+        return view('admin.categories_menu.edit', compact('item', 'parent_item'));
     }
 
     /**

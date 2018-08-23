@@ -11,7 +11,7 @@
             {{Form::text('title', $menu->title, ['class' => 'form-control', 'placeholder' => 'Название пункта меню'])}}
         </div>
         <div class="form-group">
-            {{Form::label('weight', 'URL', ['class' => 'label_form'])}}
+            {{Form::label('weight', 'Порядковый номер', ['class' => 'label_form'])}}
             {{Form::number('weight', $menu->weight, ['class' => 'form-control', 'placeholder' => 'Указавыть число от 0 до 100'])}}
         </div>
         <div class="form-group">

@@ -18,7 +18,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = Category::orderBy('id', 'desc')->paginate(5);
-        return view('admin.categories.index')->with('categories', $categories);
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -44,10 +44,7 @@ class CategoriesController extends Controller
             'description' => 'required|max:2000'
         ]);
 
-        $category = new Category();
-        $category->title = $request->title;
-        $category->description = $request->description;
-        $category->save();
+        Category::create($request->all());
 
         return redirect()->route('categories.index')->with('success', 'Новая категория «'.$request->title.'» добавлена!');
     }
@@ -73,7 +70,7 @@ class CategoriesController extends Controller
     public function edit($slug)
     {
         $category = Category::whereSlug($slug)->firstOrFail();
-        return view('admin.categories.edit')->with('category', $category);
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**

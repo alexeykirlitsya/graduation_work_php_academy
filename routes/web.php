@@ -47,3 +47,7 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth','role:admin']],funct
 /**** AUTH *****/
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Socialite auth (google)
+Route::get('login/{service}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{service}/callback', 'Auth\LoginController@handleProviderCallback');

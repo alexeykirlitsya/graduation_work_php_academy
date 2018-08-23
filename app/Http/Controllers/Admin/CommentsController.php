@@ -17,7 +17,7 @@ class CommentsController extends Controller
     public function index()
     {
         $comments = Comment::orderBy('created_at','desc')->paginate(5);
-        return view('admin.comments.index')->with('comments', $comments);
+        return view('admin.comments.index', compact('comments'));
     }
 
     /**
@@ -28,9 +28,8 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-
         $comment = Comment::find($id);
-        return view('admin.comments.show')->with('comment', $comment);
+        return view('admin.comments.show', compact('comment'));
     }
 
     /**
@@ -42,7 +41,7 @@ class CommentsController extends Controller
     public function edit($id)
     {
         $comment = Comment::find($id);
-        return view('admin.comments.edit')->with('comment', $comment);
+        return view('admin.comments.edit', compact('comment'));
     }
 
     /**
@@ -61,13 +60,9 @@ class CommentsController extends Controller
         ]);
 
         $comment = Comment::find($id);
-        $comment->title = $request->title;
-        $comment->email = $request->email;
-        $comment->comment = $request->comment;
+        $comment->update($request->all());
 
-        $comment->save();
-
-        return redirect()->route('comments.show',$comment->id)->with('success', 'Комментарий успешно отредактирован');
+        return redirect()->route('comments.show', $comment->id)->with('success', 'Комментарий успешно отредактирован');
     }
 
     /**

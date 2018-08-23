@@ -14,7 +14,6 @@ use App\Models\Post;
 use App\Models\Comment;
 use Purifier;
 
-
 class IndexPageController extends Controller
 {
     //1. Home page - index
@@ -22,7 +21,7 @@ class IndexPageController extends Controller
     {
         $posts = Post::orderBy('id', 'desc')->paginate(5);
         $comments = Comment::OrderBy('id', 'desc')->limit(5)->get();
-        return view('pages.index')->with('posts', $posts)->with('comments', $comments);
+        return view('pages.index', compact('posts','comments'));
     }
 
     //2. Contact page show
@@ -58,14 +57,14 @@ class IndexPageController extends Controller
 
         //choose all posts of category
         $posts = Post::with('category')->where('category_id','=', $category_id)->paginate(10);
-        return view('category.index')->with('category', $category)->with('posts', $posts);
+        return view('category.index', compact('category', 'posts'));
     }
 
     //5. Page single
     public  function showSinglePage($slug)
     {
         $page = Page::whereSlug($slug)->firstOrFail();
-        return view('page.show')->with('page', $page);
+        return view('page.show', compact('page'));
     }
 
     //6. Post single page
@@ -74,11 +73,7 @@ class IndexPageController extends Controller
         $post = Post::whereSlug($slug)->firstOrFail();
         $last_posts = Post::orderBy('id', 'desc')->limit(5)->get();
 
-
-        return view('post.show',[
-            'post' => $post,
-            'last_posts' => $last_posts
-        ]);
+        return view('post.show',compact('post','last_posts'));
     }
 
     //7. Comment request in the single post page
@@ -119,6 +114,6 @@ class IndexPageController extends Controller
     {
         $searchKey = $searchKey->search;
         $posts = Post::search($searchKey)->paginate(5);
-        return view('search.index')->with('posts', $posts);
+        return view('search.index', compact('posts'));
     }
 }

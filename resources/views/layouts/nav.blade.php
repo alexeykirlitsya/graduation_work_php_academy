@@ -26,7 +26,7 @@
 
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            {{ Auth::user()->name }} <img src="{{ Auth::user()->avatar ? Auth::user()->avatar : 'https://vignette.wikia.nocookie.net/angrybirds/images/a/a9/%D0%A0%D1%8D%D0%B4_8817.gif/revision/latest?cb=20131101114628&path-prefix=ru'}}" alt="" class="avatar"><span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu">

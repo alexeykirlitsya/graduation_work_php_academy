@@ -20,12 +20,7 @@ class PageController extends Controller
         $posts = Post::count();
         $comments = Comment::count();
         $users = User::count();
-        return view('admin.index_page',[
-            'pages' => $pages,
-            'categories' => $categories,
-            'posts' => $posts,
-            'comments' => $comments,
-            'users' => $users
-        ]);
+
+        return view('admin.index_page', compact('pages', 'categories', 'posts', 'comments', 'users'));
     }
 }

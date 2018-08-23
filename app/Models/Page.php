@@ -11,6 +11,8 @@ class Page extends Model
 
     protected $table = 'pages';
 
+    protected $fillable = ['title', 'description', 'text'];
+
     public function sluggable()
     {
         return ['slug' => ['source' => 'title']];

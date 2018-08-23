@@ -20,7 +20,7 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::orderBy('id', 'desc')->paginate(5);
-        return view('admin.posts.index')->with('posts', $posts);
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -35,7 +35,8 @@ class PostsController extends Controller
         foreach ($all_categories as $category){
             $categories[$category->id] = $category->title;
         }
-        return view('admin.posts.create')->with('categories', $categories);
+
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -120,7 +121,7 @@ class PostsController extends Controller
         }
 
         $post = Post::whereSlug($slug)->firstOrFail();
-        return view('admin.posts.edit')->with('post', $post)->with('categories', $categories);
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -198,8 +199,6 @@ class PostsController extends Controller
     public function destroy($slug)
     {
         $post = Post::whereSlug($slug)->firstOrFail();
-
-        $post_id = $post->id;
 
         //Del images
         $oldImg = $post->img;

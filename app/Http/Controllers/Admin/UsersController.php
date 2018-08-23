@@ -17,7 +17,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::paginate(10);
-        return view('admin.users.index')->with('users', $users);
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -75,7 +75,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('admin.users.edit')->with('user', $user);
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -120,7 +120,7 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect()->route('users.index')->with('success', 'Пользователь удален!');
 
+        return redirect()->route('users.index')->with('success', 'Пользователь удален!');
     }
 }
