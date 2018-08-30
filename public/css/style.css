@@ -439,3 +439,6 @@ select.admin_select_parent_menu {
     margin: 0;
     padding: 0;
 }
+#success, #errors{
+    display: none;
+}

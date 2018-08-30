@@ -61,6 +61,12 @@
                                 <a class="btn btn-danger" href="{{ url('login/google') }}">
                                     {{ __('Google') }}
                                 </a>
+                                <a class="btn btn-success" href="{{ url('login/github') }}">
+                                    {{ __('Github') }}
+                                </a>
+                                <a class="btn btn-primary" href="{{ url('login/bitbucket') }}">
+                                    {{ __('Bitbucket') }}
+                                </a>
                             </div>
                         </div>
                     </form>

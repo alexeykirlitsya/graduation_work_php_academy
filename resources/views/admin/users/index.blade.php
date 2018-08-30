@@ -20,7 +20,7 @@
                     <tr>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->role->title == "admin" ? 'Администратор' : 'Пользователь' }}</td>
+                        <td>{{ $user->role->title}}</td>
                         <td>
                             <a href="{{route('users.edit', $user->id)}}" class="btn btn-warning btn-xs">Редактировать</a>
                         </td>

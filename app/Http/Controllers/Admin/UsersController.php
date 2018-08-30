@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use App\User;
+use App\Models\Role;
+use App\Models\User;
 
 class UsersController extends Controller
 {
@@ -27,7 +28,13 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $all_roles = Role::all();
+        $roles = [];
+        foreach ($all_roles as $role){
+            $roles[$role->id] = $role->title;
+        }
+
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -74,8 +81,14 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
+        $all_roles = Role::all();
+        $roles = [];
+        foreach ($all_roles as $role){
+            $roles[$role->id] = $role->title;
+        }
+
         $user = User::find($id);
-        return view('admin.users.edit', compact('user'));
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**

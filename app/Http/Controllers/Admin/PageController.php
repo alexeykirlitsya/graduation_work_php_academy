@@ -7,7 +7,7 @@ use App\Models\Page;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Comment;
-use App\User;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 

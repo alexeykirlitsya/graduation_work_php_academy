@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Auth;
-use App\User;
+use App\Models\User;
 use App\Mail\Contact;
 use App\Models\Category;
 use App\Models\Page;
@@ -33,18 +33,23 @@ class IndexPageController extends Controller
     //3. Contact page post
     public function postContactPage(Request $request)
     {
-        $this->validate($request, [
+        $validator = \Validator::make($request->all(), [
             'email' => 'required|email',
             'topic' => 'required|min:5|max:100',
             'message' => 'required|min:10'
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors'=>$validator->errors()->all()]);
+            // return response()->json($validator->errors()->all());
+        }
 
         $email = $request->email;
         $topic = $request->topic;
         $message = $request->message;
 
         Mail::to('alexeykirlitsya@gmail.com')->send(new Contact($topic, $message, $email));
-        return redirect()->route('contact.page')->with('success', 'Ваше письмо было успешно отправлено!');
+        return response()->json(['success'=>'Ваше письмо было успешно отправлено!']);
     }
 
     //4. Category single page
@@ -79,6 +84,7 @@ class IndexPageController extends Controller
     //7. Comment request in the single post page
     public function postCommentsPost(Request $request)
     {
+
         $this->validate($request,[
             'title' => 'max:100',
             'email' => 'email|max:191',
