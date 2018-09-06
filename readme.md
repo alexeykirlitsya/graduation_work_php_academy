@@ -1,59 +1,57 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+![](https://avatars2.githubusercontent.com/u/31931131?s=460&v=4)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Фамилия: Кирлица  
+Имя: Алексей
 
-## About Laravel
+  
+Email: alexeykirlitsya@gmail.com  
+Github: [github.com/alexeykirlitsya](https://github.com/alexeykirlitsya)  
+Facebook: [www.facebook.com/alexeykirlitsya](https://www.facebook.com/alexeykirlitsya)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+* * *
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Файлы блога на github:** [ссылка на репозиторий](https://github.com/alexeykirlitsya/graduation_work_php_academy)
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+* * *
 
-## Learning Laravel
+**На блоге реализовано:**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+1.  Регистрация/Авторизация - встроеная и с помощью **api**: google, github, bitbucket;
+2.  Основное меню (пункт «Контакты» по умолчанию);
+3.  Двухуровневое меню категорий;
+4.  Страницы;
+5.  Категории - пагинация постов;
+6.  Посты (рецепты);
+7.  Комментарии (зарегистрированным пользователям email и имя подставляется из базы);
+8.  Аватар пользователя в комментарии;
+9.  Поиск – пагинация постов;
+10.  Форма обратной связи – страница контакты (отправка посредством **ajax**);
+11.  Виджет: вывод последних комментариев – главная страница;
+12.  Виджет: вывод новых постов (рецептов) – страница поста;
+13.  Страница пользователя – (данные профиля, публикации – если профиль администратора);
+14.  Флеш сообщение (через сессию - все страницы, через js - страница контакты);
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+**Админка:**
 
-## Laravel Sponsors
+1.  Роли – (admin, user - Middleware(CheckRole));
+2.  Главная страница – основная информация;
+3.  Главное меню – grud (поле url – адрес страницы, категории, поста и т.д.);
+4.  Страницы – grud;
+5.  Меню категорий – grud (родительские и дочерние категории - одна таблица);
+6.  Категории – grud;
+7.  Публикации – grud (img – дефолтное, обновление, удаление img при удалении поста);
+8.  Комментарии – grud (при удалении поста, комментарии удаляются - onDelete('cascade'));
+9.  Пользователи - grud;
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+**Использовались laravel пакеты и дополнения:**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+*   Forms & HTML - [https://laravelcollective.com/](https://laravelcollective.com/);
+*   Image - [http://image.intervention.io/](http://image.intervention.io/);
+*   Purifier - [https://github.com/mewebstudio/Purifier](https://github.com/mewebstudio/Purifier);
+*   Search - [https://www.algolia.com](https://www.algolia.com);
+*   Ckeditor - [https://github.com/UniSharp/laravel-ckeditor](https://github.com/UniSharp/laravel-ckeditor);
+*   Slug - [https://github.com/cviebrock/eloquent-sluggable](https://github.com/cviebrock/eloquent-sluggable);
+*   Lang - [https://github.com/caouecs/Laravel-lang](https://github.com/caouecs/Laravel-lang);
+*   Helper - [https://github.com/barryvdh/laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper);
+*   Email - [https://mailtrap.io/](https://mailtrap.io/);
+*   Avatar - [https://ru.gravatar.com/](https://ru.gravatar.com/);
