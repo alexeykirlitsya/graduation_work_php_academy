@@ -5,12 +5,7 @@
 
   
 Email: alexeykirlitsya@gmail.com  
-Github: [github.com/alexeykirlitsya](https://github.com/alexeykirlitsya)  
 Facebook: [www.facebook.com/alexeykirlitsya](https://www.facebook.com/alexeykirlitsya)
-
-* * *
-
-**Файлы блога на github:** [ссылка на репозиторий](https://github.com/alexeykirlitsya/graduation_work_php_academy)
 
 * * *
 
