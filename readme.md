@@ -4,9 +4,9 @@
 Имя: Алексей
 
   
-Email: alexeykirlitsya@gmail.com  
-Facebook: [www.facebook.com/alexeykirlitsya](https://www.facebook.com/alexeykirlitsya)
-Link to working blog: http://cookery-blog.alexeykirlitsya.mcdir.ru/
+Email: alexeykirlitsya@gmail.com<br />
+Facebook: [www.facebook.com/alexeykirlitsya](https://www.facebook.com/alexeykirlitsya)<br />
+Link to working blog: [cookery-blog.alexeykirlitsya.mcdir.ru](http://cookery-blog.alexeykirlitsya.mcdir.ru)
 
 * * *
 
