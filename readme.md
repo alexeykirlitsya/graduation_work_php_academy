@@ -6,6 +6,7 @@
   
 Email: alexeykirlitsya@gmail.com  
 Facebook: [www.facebook.com/alexeykirlitsya](https://www.facebook.com/alexeykirlitsya)
+Link to working blog: http://cookery-blog.alexeykirlitsya.mcdir.ru/
 
 * * *
 
